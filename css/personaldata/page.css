@@ -1,0 +1,124 @@
+.page{
+    width: 100vw;
+    height: 90vh;
+    position: absolute;
+    top: 10vh;
+}
+
+.user{
+    width: 100%;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+#img{
+    position: relative;
+    width: 11%;
+    top: 35%;
+    left: 10%;
+    border-radius: 100%;
+    border: 5px solid white;
+}
+
+#name{
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    position: relative;
+    top: -5%;
+    left: 25%;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+#log_out{
+    font-family: 'Poppins', sans-serif;
+    color: rgb(189, 43, 43);
+    width: 8.5%;
+    position: relative;
+    top: -5%;
+    left: 25%;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+}
+
+#log_out:hover{
+    cursor: pointer;
+}
+
+.buttons{
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    top: 45%;
+}
+
+.data{
+    transition: all 0.5s ease;
+    position: relative;
+    width: 30%;
+    height: 50%;
+    top: 30%;
+    left: 10%;
+    border: 2px solid #EE7154;
+    border-radius: 1vh;
+}
+
+.pass{
+    transition: all 0.5s ease;
+    position: absolute;
+    width: 30%;
+    height: 50%;
+    top: 30%;
+    right: 10%;
+    border: 2px solid #EE7154;
+    border-radius: 1vh;
+}
+
+.icon{
+    color: #EE7154;
+    position: absolute;
+    top: 37%;
+    left: 13%;
+    font-size: 3em;
+}
+
+.text{
+    font-family: 'Poppins', sans-serif;
+    color: #EE7154;
+    position: absolute;
+    top: 42%;
+    left: 28%;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.data:hover{
+    transform: scale(1.05);
+    background-color: #EE7154;
+    cursor: pointer;
+}
+
+.data:hover .icon{
+    color: #282828;
+}
+
+.data:hover .text{
+    color: #282828;
+}
+
+.pass:hover{
+    transform: scale(1.05);
+    background-color: #EE7154;
+    cursor: pointer;
+}
+
+.pass:hover .icon{
+    color: #282828;
+}
+
+.pass:hover .text{
+    color: #282828;
+}

@@ -1,0 +1,70 @@
+.password {
+    width: 50%;
+    position: absolute;
+    left: 25%;
+    margin-top: 20vh;
+}
+
+.password h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: 2vw;
+    text-align: center;
+}
+
+#error_msg{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: red;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    font-size: 0.7vw;
+    text-align: center;
+}
+
+.password .form-group {
+    margin-bottom: 1vw;
+}
+
+.password label {
+    color: white;
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2vw;
+    font-weight: bold;
+    margin-bottom: 0.5vw;
+    margin-top: 5vh;
+}
+
+.password input[type="password"] {
+    width: 100%;
+    padding: 0.5vw;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2vw;
+}
+
+.password button[type="submit"] {
+    margin-top: 2vh;
+    transition: all 0.5s ease;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2vw;
+    width: 102%;
+    font-weight: bold;
+    color: white;
+    background-color: #EE7154;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5vw 1vw;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.password button[type="submit"]:hover {
+    transform: scale(1.05);
+    background-color: #161616;
+    border: 1px solid #EE7154;
+    cursor: pointer;
+    color: #EE7154;
+}

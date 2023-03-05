@@ -1,0 +1,62 @@
+.byo_header{
+    width: 100vw;
+    height: 10vh;
+    position: absolute;
+    z-index: 999;
+}
+
+.arrow{
+    position: absolute;
+    top: 35%;
+    left: 3%;
+    display: flex;
+    color: white;
+    align-items: center;
+}
+
+.arrow:hover .fa-angle-left{
+    cursor: pointer;
+    color: #EE7154;
+    transition: 0.33s;
+}
+
+.arrow:hover #back{
+    cursor: pointer;
+    color: #EE7154;
+    transition: 0.33s;
+}
+
+.fa-angle-left{
+    color: white;
+    font-size: 50px;
+}
+
+#back{
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 20px;
+    margin-left: 2vh;
+}
+
+#byo_logo{
+    width: 5vw;
+    height: 5vh;
+    position: absolute;
+    top: 25%;
+    left: 47.5%;
+    right: 47.5%;
+    cursor: pointer;
+}   
+
+#byo_user{
+    position: absolute;
+    top: 35%;
+    right: 2.3%;
+    font-size: 3vh;
+    color: white;
+}
+
+#byo_user:hover{
+    color: #EE7154;
+    cursor: pointer;
+}

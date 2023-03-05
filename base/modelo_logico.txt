@@ -1,0 +1,17 @@
+BYO DATABASE STRUCTURE
+
+users(id, email, username, password, idrole)
+roles(id, nome)
+
+
+donepcs(userId, cpuId, coolerId, motherBoardId, ramId, graphicsCardId, storageId, powerSupplyId, caseId)
+cpu(id, name, img, cores, performance, tdp, graphics, price, stock, socket)
+cooler(id, name, rpm, size, price, stock, socket, tdp)
+motherBoard(id, name, img, socket, form, price, stock, maxRam, typeRam, slotsRam, slotsM2, slotsSata, tdp)
+ram(id, name, img, typeRam, modules, ramSpeed, price, stock, tdp)
+graphicsCard(id, name, img, vRam, dimensions, price, stock, tdp)
+storage(id, name, img, capacity, type, form, price, stock, tdp)
+
+
+powerSupply(id, name, img, form, modular, tdp, price, stock)
+case(id, name, img, form, price, stock)

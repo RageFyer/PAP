@@ -1,0 +1,133 @@
+.arrow{
+    position: absolute;
+    top: 8%;
+    left: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.fa-angle-left{
+    color: white;
+    font-size: 50px;
+}
+
+#back{
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 20px;
+    margin-left: 2vh;
+}
+
+.arrow:hover .fa-angle-left{
+    cursor: pointer;
+    color: #EE7154;
+    transition: 0.33s;
+}
+
+.arrow:hover #back{
+    cursor: pointer;
+    color: #EE7154;
+    transition: 0.33s;
+}
+
+#byo_logo{
+    width: 5vw;
+    height: 5vh;
+    position: absolute;
+    top: 7%;
+    left: 47.5%;
+    cursor: pointer;
+}   
+
+.container{
+    position: absolute;
+    top: 22%;
+    left: 35%;
+    width: 30%;
+    height: 60%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#login{
+    font-family: 'Poppins', sans-serif;
+    color: #161616;
+    position: relative;
+    top: 7%;
+    left: 43.5%;
+    font-size: 3vh;
+}
+
+#error_msg{
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    top: 10%;
+    left: 10%;
+    font-size: 1.3vh;
+    color: red;
+}
+
+form{
+    position: absolute;
+    top: 23%;
+    width: 100%;
+    height: 50%;
+}
+
+.input{
+    position: relative;
+    left: 10%;
+    height: 50%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.7vh;
+}
+
+input{
+    width: 80%;
+    height: 5vh;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.7vh;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+#forgot{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3vh;
+    color: blue;
+    position: relative;
+    top: 0.5vh;
+    left: 45%;
+    display: block;
+    outline: 0;
+}
+
+#submit{
+    width: 80%;
+    height: 7vh;
+    margin-top: 1%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.7vh;
+    background-color: #EE7154;
+    color: white;
+    border: none;
+    transition: 0.33s;
+    border-radius: 5px;
+}
+
+#submit:hover{
+    cursor: pointer;
+    background-color: #161616;
+    color: white;
+}
+
+#signup{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3vh;
+    position: absolute;
+    bottom: 5.5%;
+    left: 35%;
+    display: block;
+    outline: 0;
+}

@@ -1,0 +1,53 @@
+.byo_header{
+    width: 100vw;
+    height: 10vh;
+    background-color: #282828;
+    position: fixed;
+    z-index: 999;
+}
+
+#byo_logo{
+    width: 5vw;
+    height: 5vh;
+    position: absolute;
+    top: 25%;
+    left: 47.5%;
+    cursor: pointer;
+}   
+
+.byo_navigation {
+    position: absolute;
+    top: 36%;
+}
+
+.montar{
+    left: 25%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2vh;
+    color: white;
+}
+
+.lojas{
+    right: 25%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2vh;
+    color: white;
+}
+
+.byo_navigation:hover{
+    color: #EE7154;
+    cursor: pointer;
+}
+
+#byo_user{
+    position: absolute;
+    top: 35%;
+    right: 2.3%;
+    font-size: 3vh;
+    color: white;
+}
+
+#byo_user:hover{
+    color: #EE7154;
+    cursor: pointer;
+}
