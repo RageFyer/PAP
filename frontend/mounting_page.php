@@ -174,7 +174,7 @@
                     const piece = buildContainer.querySelector('.piece');
                     const modeloPiece = buildContainer.querySelector('.modelo');
                     piece.src = img.src;
-                    modeloPiece.innerHTML = modelo.innerHTML
+                    modeloPiece.innerHTML = modelo.innerHTML;
                 }else if (popup.classList.contains('ram')) {
                     const buildContainer = document.querySelector('.byo_buildContainer.ram');
                     const piece = buildContainer.querySelector('.piece');
