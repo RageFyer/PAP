@@ -1,8 +1,11 @@
+body{
+    text-align: center;
+}
+
 .byo_body{
     width: 100vw;
     height: 90vh;
     display: flex;
-    align-items: center;
     top: 10vh;
 }
 
@@ -12,21 +15,49 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+    justify-content: center;
 }
 
 .byo_category2{
     font-family: 'Poppins', sans-serif;
     color: white;
     position: absolute;
+    width: 100vw;
     top: 5%;
-    right: 41.8%;
+}
+
+#byo_category3{
+    font-family: 'Poppins', sans-serif;
+    color: red;
+    width: 100vw;
+    position: absolute;
+    top: 11%;
+    -moz-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+@-webkit-keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
 }
 
 .content{
     position: relative;
     top: 7%;
     margin-top: 4%;
-    margin-left: 7%;
 }
 
 .byo_buildContainer{
@@ -38,6 +69,10 @@
     height: 30vh;
     background-color: white;
     border-radius: 1%;
+}
+
+.cpu, .graphics{
+    margin-left: 0%;
 }
 
 .piece:hover{
@@ -95,7 +130,7 @@
 #buttons{
     position: relative;
     top: 12%;
-    left: 59%;
+    left: 49.3%;
     width: 50%;
     height: 10vh;
 }
@@ -108,7 +143,7 @@
     width: 35%;
     height: 70%;
     color: white;
-    transition: transform .2s;
+    transition: transform 0.3s;
 }
 
 #verify:hover{
@@ -127,7 +162,34 @@
     height: 70%;
     color: white;
     margin-left: 2%;
-    transition: transform .2s;
+    transition: transform 0.3s;
+    -moz-animation: transformanimation 0s ease-in 5s forwards;
+    /* Firefox */
+    -webkit-animation: transformanimation 0s ease-in 5s forwards;
+    /* Safari and Chrome */
+    -o-animation: transformanimation 0s ease-in 5s forwards;
+    /* Opera */
+    animation: transformanimation 0s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes transformanimation {
+    from {
+        background-color: green;
+    }
+    to {
+        background-color: #EE7154;
+    }
+}
+  
+@-webkit-keyframes transformanimation {
+    from {
+        background-color: green;
+    }
+    to {
+        background-color: #EE7154;
+    }
 }
 
 #save:hover{

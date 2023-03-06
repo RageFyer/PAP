@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../css/header/sidebar.css">
     <link rel="stylesheet" href="../css/mouting/popup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <title>Montar</title>
 </head>
 <body>
@@ -38,29 +39,43 @@
 
     <div class="byo_scrolled">
         <h2 class="byo_category2">DÁ ASAS À TUA MONTAGEM!</h2>
+        <p id="byo_category3"></p>
+
+        <form id="form" method="POST" >
+            <input type="hidden" name="cpu" id="cpu">
+            <input type="hidden" name="cooler" id="cooler">
+            <input type="hidden" name="motherboard" id="motherboard">
+            <input type="hidden" name="ram" id="ram">
+            <input type="hidden" name="graphics" id="graphics">
+            <input type="hidden" name="storage" id="storage">
+            <input type="hidden" name="powersupply" id="powersupply">
+            <input type="hidden" name="case" id="case">
+            <button type="submit" id="btn"></button>
+        </form>
+
         <div class="content">
             <div class="byo_buildContainer cpu">
                 <p class="title">PROCESSADORES</p>
                 <img class="piece" src="" alt="">
-                <p id="processador" class="modelo"></p>
+                <p class="modelo"></p>
                 <button class="check"><i class="fa-solid fa-repeat"></i></button>
             </div>
             <div class="byo_buildContainer cooler">
                 <p class="title">COOLER</p>
                 <img class="piece" src="" alt="">
-                <p id="cooler" class="modelo"></p>
+                <p class="modelo"></p>
                 <button class="check"><i class="fa-solid fa-repeat"></i></button>
             </div>
             <div class="byo_buildContainer motherboard">
                 <p class="title">MOTHERBOARD</p>
                 <img class="piece" src="" alt="">
-                <p id="motherboard" class="modelo"></p>
+                <p class="modelo"></p>
                 <button class="check"><i class="fa-solid fa-repeat"></i></button>
             </div>
             <div class="byo_buildContainer ram">
                 <p class="title">RAM</p>
                 <img class="piece" src="" alt="">
-                <p id="ram" class="modelo"></p>
+                <p class="modelo"></p>
                 <button class="check"><i class="fa-solid fa-repeat"></i></button>
             </div>
         </div>
@@ -68,31 +83,31 @@
             <div class="byo_buildContainer graphics">
                 <p class="title">PLACA GRÁFICA</p>
                 <img class="piece" src="" alt="">
-                <p id="graphics" class="modelo"></p>
+                <p class="modelo"></p>
                 <button class="check"><i class="fa-solid fa-repeat"></i></button>
             </div>
             <div class="byo_buildContainer storage">
-                <p class="title">ARMAZENATO</p>
+                <p class="title">ARMAZENAMENTO</p>
                 <img class="piece" src="" alt="">
-                <p id="storage" class="modelo"></p>
+                <p class="modelo"></p>
                 <button class="check"><i class="fa-solid fa-repeat"></i></button>
             </div>
             <div class="byo_buildContainer powersupply">
                 <p class="title">FONTES DE ALIMENTAÇÃO</p>
                 <img class="piece" src="" alt="">
-                <p id="power" class="modelo"></p>
+                <p class="modelo"></p>
                 <button class="check"><i class="fa-solid fa-repeat"></i></button>
             </div>
             <div class="byo_buildContainer case">
                 <p class="title">CAIXA</p>
                 <img class="piece" src="" alt="">
-                <p id="case" class="modelo"></p>
+                <p class="modelo"></p>
                 <button class="check"><i class="fa-solid fa-repeat"></i></button>
             </div>
         </div>
         <div id="buttons">
             <button id="verify">Verificar Compatibilidades</button>
-            <button type="submit" id="save">Guardar</button>
+            <button id="save">Guardar</button>
         </div>
     </div>
 
@@ -100,6 +115,7 @@
         const checkBtn = document.querySelectorAll('.check');
         const popup = document.querySelector('.popup');
         const confirmBtn = document.querySelectorAll('.confirm');
+        const saveBtn = document.getElementById('save');
 
         popup.addEventListener('click', function() {
             if (event.target.id == 'fechar-popup' || event.target.parentElement.id == 'fechar-popup') {
@@ -217,6 +233,32 @@
             }
         });
 
+        saveBtn.addEventListener('click', function() {
+            const cpu = document.querySelector('.byo_buildContainer.cpu .modelo').innerHTML;
+            const cooler = document.querySelector('.byo_buildContainer.cooler .modelo').innerHTML;
+            const motherboard = document.querySelector('.byo_buildContainer.motherboard .modelo').innerHTML;
+            const ram = document.querySelector('.byo_buildContainer.ram .modelo').innerHTML;
+            const graphics = document.querySelector('.byo_buildContainer.graphics .modelo').innerHTML;
+            const storage = document.querySelector('.byo_buildContainer.storage .modelo').innerHTML;
+            const powersupply = document.querySelector('.byo_buildContainer.powersupply .modelo').innerHTML;
+            const casee = document.querySelector('.byo_buildContainer.case .modelo').innerHTML;
+
+            if (cpu == '' || cooler == '' || motherboard == '' || ram == '' || graphics == '' || storage == '' || powersupply == '' || casee == '') {
+                document.getElementById('byo_category3').innerHTML = 'Tem que selecionar todas as peças!';
+            }else{
+                document.getElementById('cpu').value = cpu;
+                document.getElementById('cooler').value = cooler;
+                document.getElementById('motherboard').value = motherboard;
+                document.getElementById('ram').value = ram;
+                document.getElementById('graphics').value = graphics;
+                document.getElementById('storage').value = storage;
+                document.getElementById('powersupply').value = powersupply;
+                document.getElementById('case').value = casee;
+
+                document.getElementById('btn').click(); 
+            }
+        });
+        var form = document.getElementById("myForm"); function handleForm(event) {     event.preventDefault(); }  form.addEventListener('submit', handleForm);
     </script>
 
     <?php
@@ -232,6 +274,26 @@
                 window.location.href = '../frontend/login_page.php';
             }
             </script>";
+        }
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if (isset($_SESSION['username'])) {
+                $cpu = $_POST['cpu'];
+                $cooler = $_POST['cooler'];
+                $motherboard = $_POST['motherboard'];
+                $ram = $_POST['ram'];
+                $graphics = $_POST['graphics'];
+                $storage = $_POST['storage'];
+                $powersupply = $_POST['powersupply'];
+                $case = $_POST['case'];
+                $dataprovider->sendPc($cpu, $cooler, $motherboard, $ram, $graphics, $storage, $powersupply, $case);
+            }else{
+                echo "<script>
+                document.getElementById('save').onclick = function() {
+                    document.getElementById('byo_category3').innerHTML = 'Faça login para guardar o seu pc!';
+                }
+                </script>";
+            }
         }
     ?>
 </body>

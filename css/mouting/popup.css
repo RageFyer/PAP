@@ -134,6 +134,11 @@
     left: 60%;
 }
 
+#dimension{
+    position: absolute;
+    left: 49%;
+}
+
 #preco{
     position: absolute;
     left: 78.9%;
@@ -243,6 +248,18 @@
     overflow: hidden;
 }
 
+.graphicsdime{
+    position: absolute;
+    top: 32%;
+    left: 55%;
+    width: 40%;
+    font-size: 1.3vw;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-align: left;
+    overflow: hidden;
+}
+
 .price{
     position: absolute;
     top: 33%;
@@ -273,4 +290,9 @@
 
 .confirm:hover{
     color: green;
+}
+
+#btn{
+    background: none;
+    border: none;
 }

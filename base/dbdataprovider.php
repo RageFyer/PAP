@@ -262,14 +262,20 @@ class DBDataprovider {
 
     function getCases(){
         $this->connect();
-        $sql = "SELECT name, img, price FROM cases";
+        $sql = "SELECT name, img, graphicsdime, price FROM cases";
         $resultset = mysqli_query($this->conn, $sql);
 
         if ($resultset->num_rows > 0) {
+            echo '<div id="infos">';
+            echo '<span id="modelo">Modelo</span>';
+            echo '<span id="dimension">Dimensão para placa grafica</span>';
+            echo '<span id="preco">Preço</span>';
+            echo '</div>';
             while($row = $resultset->fetch_assoc()) {
                 echo '<div class="container">';
                 echo '<img class="img" src="' . $row['img'] . '" alt="">';
                 echo '<p class="name">' . $row['name'] . '</p>';
+                echo '<p class="graphicsdime">' . $row['graphicsdime'] . '</p>';
                 echo '<p class="price">' . $row['price'] . '€</p>';
                 echo '<button class="confirm"><i class="fa-solid fa-check"></i></button>';
                 echo '</div>';
@@ -306,9 +312,10 @@ class DBDataprovider {
         } else {
             echo "0 results";
         }
+        
     }
 
-    function sendPc($cpu, $gpus, $rams, $storage, $power, $case, $cooler){
+    function sendPc($cpu, $cooler, $motherboard, $ram, $graphics, $storage, $powersupply, $case){
         $this->connect();
         $sql = "SELECT id FROM users WHERE username = '" . $_SESSION['username'] . "'";
         $resultset = mysqli_query($this->conn, $sql);
@@ -320,12 +327,12 @@ class DBDataprovider {
         $row = $resultset->fetch_assoc();
         $cpu_id = $row['id'];
 
-        $sql = "SELECT id FROM graphicscards WHERE name = '" . $gpus . "'";
+        $sql = "SELECT id FROM graphicscards WHERE name = '" . $graphics . "'";
         $resultset = mysqli_query($this->conn, $sql);
         $row = $resultset->fetch_assoc();
         $gpu_id = $row['id'];
         
-        $sql = "SELECT id FROM rams WHERE name = '" . $rams . "'";
+        $sql = "SELECT id FROM rams WHERE name = '" . $ram . "'";
         $resultset = mysqli_query($this->conn, $sql);
         $row = $resultset->fetch_assoc();
         $ram_id = $row['id'];
@@ -335,7 +342,7 @@ class DBDataprovider {
         $row = $resultset->fetch_assoc();
         $storage_id = $row['id'];
 
-        $sql = "SELECT id FROM powersupplys WHERE name = '" . $power . "'";
+        $sql = "SELECT id FROM powersupplys WHERE name = '" . $powersupply . "'";
         $resultset = mysqli_query($this->conn, $sql);
         $row = $resultset->fetch_assoc();
         $power_id = $row['id'];
@@ -349,9 +356,25 @@ class DBDataprovider {
         $resultset = mysqli_query($this->conn, $sql);
         $row = $resultset->fetch_assoc();
         $cooler_id = $row['id'];
-        
-        $sql = "INSERT INTO donepcs (users_id, cpus_id, graphicscard1_id, ram1_id, storage_id, power_id, case_id, cooler_id, price) VALUES ('$user_id', '$cpu_id', '$gpu_id', '$ram_id', '$storage_id', '$power_id', '$case_id', '$cooler_id')";
+
+        $sql = "SELECT id FROM motherboards WHERE name = '" . $motherboard . "'";
         $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $motherboard_id = $row['id'];
+
+        $sql = "INSERT INTO donepcs (users_id, cpus_id, coolers_id, motherboards1_id, rams1_id, graphicscards1_id, storages1_id, powersupplys1_id, cases1_id) VALUES ('$user_id', '$cpu_id', '$cooler_id', '$motherboard_id', '$ram_id', '$gpu_id', '$storage_id', '$power_id', '$case_id')";
+        $resultset = mysqli_query($this->conn, $sql);
+
+
+        if ($resultset) {
+            echo "<script>document.getElementById('save').innerHTML='<i class=\"fa-solid fa-check\"></i>';
+                document.getElementById('save').style.backgroundColor='green';
+                document.getElementById('save').style.border='none';</script>";
+        } else {
+            echo "<script>document.getElementById('save').innerHTML='<i class=\"fa-solid fa-xmark\"></i>';
+                document.getElementById('save').style.backgroundColor='red';
+                document.getElementById('save').style.border='none';</script>";
+        }
     }
 }
 ?>
