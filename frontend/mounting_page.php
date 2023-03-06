@@ -258,7 +258,7 @@
                 document.getElementById('btn').click(); 
             }
         });
-        var form = document.getElementById("myForm"); function handleForm(event) {     event.preventDefault(); }  form.addEventListener('submit', handleForm);
+        var form = document.getElementById("myForm"); function handleForm(event) { event.preventDefault(); }  form.addEventListener('submit', handleForm);
     </script>
 
     <?php
