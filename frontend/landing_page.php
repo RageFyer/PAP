@@ -20,7 +20,7 @@
     <div class="byo_header">
         <a href="../frontend/mounting_page.php"><span class="byo_navigation montar" onClick="document.getElementsByClassName('byo_scrolled')[0].scrollIntoView();">MONTAR</span></a>
         <a href="../frontend/landing_page.php"><img id="byo_logo" src="../img/BYO_LOGO.png"></a>
-        <a href=""><span class="byo_navigation lojas">LOJAS</span></a>
+        <a href="../frontend/stores_page.php"><span class="byo_navigation lojas">LOJAS</span></a>
         <form METHOD="POST">
             <i id="byo_user" class="fa-solid fa-user"></i>
         </form>
@@ -38,7 +38,6 @@
             lugar certo para ti.
         </p>
     </div>
-
     <div class="byo_body">
         <h2 class="byo_category">PRÉ MONTADOS</h2>
         <section class="byo_prebuilds">

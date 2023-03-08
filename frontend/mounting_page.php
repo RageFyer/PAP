@@ -24,7 +24,7 @@
     <div class="byo_header">
         <a href="../frontend/mounting_page.php"><span class="byo_navigation montar" onClick="document.getElementsByClassName('byo_scrolled')[0].scrollIntoView();">MONTAR</span></a>
         <a href="../frontend/landing_page.php"><img id="byo_logo" src="../img/BYO_LOGO.png"></a>
-        <a href=""><span class="byo_navigation lojas">LOJAS</span></a>
+        <a href="../frontend/stores_page.php"><span class="byo_navigation lojas">LOJAS</span></a>
         <i id="byo_user" class="fa-solid fa-user"></i>
     </div>
 

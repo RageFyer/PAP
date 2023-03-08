@@ -110,6 +110,256 @@ class DBDataprovider {
         }
     }
 
+    function getName(){
+        $this->connect();
+        $username = $_SESSION['username'];
+        $sql = "SELECT username FROM users WHERE username = '$username'";
+        $resultset = mysqli_query($this->conn, $sql);
+
+        if ($resultset->num_rows > 0) {
+            $row = $resultset->fetch_assoc();
+            $username = $row['username'];
+            echo $username;
+        } else {
+            echo "0 results";
+        }
+    }
+
+    function getEmail(){
+        $this->connect();
+        $username = $_SESSION['username'];
+        $sql = "SELECT email FROM users WHERE username = '$username'";
+        $resultset = mysqli_query($this->conn, $sql);
+
+        if ($resultset->num_rows > 0) {
+            $row = $resultset->fetch_assoc();
+            $email = $row['email'];
+            echo $email;
+        } else {
+            echo "0 results";
+        }
+    }
+
+    function nameExists($username){
+        $this->connect();
+        $sql = "SELECT * FROM users WHERE username = '$username'";
+        $resultset = mysqli_query($this->conn, $sql);
+        if(mysqli_num_rows($resultset) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function getComputers() {
+        $this->connect();
+        $username = $_SESSION['username'];
+        $sql = "SELECT id FROM users WHERE username = '$username'";
+        $resultset = mysqli_query($this->conn, $sql);
+        if ($resultset->num_rows > 0) {
+            $row = $resultset->fetch_assoc();
+            $id = $row['id'];
+            $sql = "SELECT * FROM donepcs WHERE users_id = '$id'";
+            $resultset = mysqli_query($this->conn, $sql);
+            if (mysqli_num_rows($resultset) > 0) {
+                while($row = $resultset->fetch_assoc()) {
+                    echo "<tr>
+                    <td>" . $this->getCpu($row["cpus_id"]) . "</td>
+                    <td>" . $this->getCooler($row["coolers_id"]) . "</td>
+                    <td>" . $this->getMotherboard($row["motherboards1_id"]) . "</td>
+                    <td>" . $this->getRam($row["rams1_id"]) . "</td>
+                    <td>" . $this->getGraphicsCard($row["graphicscards1_id"]) . "</td>
+                    <td>" . $this->getStorage($row["storages1_id"]) . "</td>
+                    <td>" . $this->getPowerSupply($row["powersupplys1_id"]) . "</td>
+                    <td>" . $this->getCase($row["cases1_id"]) . "</td>
+                    </tr>";
+                }
+            } else {
+                echo "0 results";
+            }
+        } else {
+            echo "0 results";
+        }
+    }
+
+    function getCpu($id) {
+        $this->connect();
+        $sql = "SELECT name FROM cpus WHERE id = '$id'";
+        $resultset = mysqli_query($this->conn, $sql);
+        if ($resultset->num_rows > 0) {
+            $row = $resultset->fetch_assoc();
+            $name = $row['name'];
+            return $name;
+        } else {
+            return "0 results";
+        }
+    }
+
+    function getCooler($id) {
+        $this->connect();
+        $sql = "SELECT name FROM coolers WHERE id = '$id'";
+        $resultset = mysqli_query($this->conn, $sql);
+        if ($resultset->num_rows > 0) {
+            $row = $resultset->fetch_assoc();
+            $name = $row['name'];
+            return $name;
+        } else {
+            return "0 results";
+        }
+    }
+
+    function getMotherboard($id) {
+        $this->connect();
+        $sql = "SELECT name FROM motherboards WHERE id = '$id'";
+        $resultset = mysqli_query($this->conn, $sql);
+        if ($resultset->num_rows > 0) {
+            $row = $resultset->fetch_assoc();
+            $name = $row['name'];
+            return $name;
+        } else {
+            return "0 results";
+        }
+    }
+
+    function getRam($id) {
+        $this->connect();
+        $sql = "SELECT name FROM rams WHERE id = '$id'";
+        $resultset = mysqli_query($this->conn, $sql);
+        if ($resultset->num_rows > 0) {
+            $row = $resultset->fetch_assoc();
+            $name = $row['name'];
+            return $name;
+        } else {
+            return "0 results";
+        }
+    }
+
+    function getGraphicsCard($id) {
+        $this->connect();
+        $sql = "SELECT name FROM graphicscards WHERE id = '$id'";
+        $resultset = mysqli_query($this->conn, $sql);
+        if ($resultset->num_rows > 0) {
+            $row = $resultset->fetch_assoc();
+            $name = $row['name'];
+            return $name;
+        } else {
+            return "0 results";
+        }
+    }
+
+    function getStorage($id) {
+        $this->connect();
+        $sql = "SELECT name FROM storages WHERE id = '$id'";
+        $resultset = mysqli_query($this->conn, $sql);
+        if ($resultset->num_rows > 0) {
+            $row = $resultset->fetch_assoc();
+            $name = $row['name'];
+            return $name;
+        } else {
+            return "0 results";
+        }
+    }
+
+    function getPowerSupply($id) {
+        $this->connect();
+        $sql = "SELECT name FROM powersupplys WHERE id = '$id'";
+        $resultset = mysqli_query($this->conn, $sql);
+        if ($resultset->num_rows > 0) {
+            $row = $resultset->fetch_assoc();
+            $name = $row['name'];
+            return $name;
+        } else {
+            return "0 results";
+        }
+    }
+
+    function getCase($id) {
+        $this->connect();
+        $sql = "SELECT name FROM cases WHERE id = '$id'";
+        $resultset = mysqli_query($this->conn, $sql);
+        if ($resultset->num_rows > 0) {
+            $row = $resultset->fetch_assoc();
+            $name = $row['name'];
+            return $name;
+        } else {
+            return "0 results";
+        }
+    }
+
+    function changeUser($username, $old_email, $new_email){
+        $this->connect();
+
+        if($username != $_SESSION['username'] && $new_email != ""){
+            if ($this->nameExists($username) && $this->emailExists($new_email)) {
+                echo "<script>
+                document.getElementById('error_msg').innerHTML = 'Username e Email já existe!';
+                </scrip>";
+            } else if ($this->nameExists($username)) {
+                echo "<script>
+                document.getElementById('error_msg').innerHTML = 'Username já existe!';
+                </script>";
+            }else if ($this->emailExists($new_email)) {
+                echo "<script>
+                document.getElementById('error_msg').innerHTML = 'Email já existe!';
+                </script>";
+            }  else {
+                $sql = "UPDATE users SET username = '$username', email = '$new_email' WHERE email = '$old_email'";
+                $resultset = mysqli_query($this->conn, $sql);
+                if ($resultset) {
+                    echo "<script>
+                    document.getElementById('msg').innerHTML = 'Username e email alterados com sucesso!';
+                    </script>";
+                    $_SESSION['username'] = $username;
+                } else {
+                    echo "<script>
+                    document.getElementById('error_msg').innerHTML = 'Erro ao alterar o username e email!';
+                    </script>";
+                }
+            }
+        } else if ($username == $_SESSION['username'] && $new_email != "") {
+            if ($this->emailExists($new_email)) {
+                echo "<script>
+                document.getElementById('error_msg').innerHTML = 'Email já existe!';
+                </script>";
+            } else {
+                $sql = "UPDATE users SET email = '$new_email' WHERE username = '$username'";
+                $resultset = mysqli_query($this->conn, $sql);
+                if ($resultset) {
+                    echo "<script>
+                    document.getElementById('msg').innerHTML = 'Email alterado com sucesso!';
+                    </script>";
+                } else {
+                    echo "<script>
+                    document.getElementById('error_msg').innerHTML = 'Erro ao alterar o email!';
+                    </script>";
+                }
+            }
+        } else if ($username != $_SESSION['username'] && $new_email == "") {
+            if ($this->nameExists($username)) {
+                echo "<script>
+                document.getElementById('error_msg').innerHTML = 'Username já existe!';
+                </script>";
+            } else {
+                $sql = "UPDATE users SET username = '$username' WHERE email = '$old_email'";
+                $resultset = mysqli_query($this->conn, $sql);
+                if ($resultset) {
+                    echo "<script>
+                    document.getElementById('msg').innerHTML = 'Username alterado com sucesso!';
+                    </script>";
+                    $_SESSION['username'] = $username;
+                } else {
+                    echo "<script>
+                    document.getElementById('error_msg').innerHTML = 'Erro ao alterar o username!';
+                    </script>";
+                }
+            }
+        } else {
+            echo "<script>
+            document.getElementById('error_msg').innerHTML = 'Erro ao alterar o username e email!';
+            </script>";
+        }
+    }
+
     function getCpus(){
         $this->connect();
         $sql = "SELECT name, img, socket, price FROM cpus";

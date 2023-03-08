@@ -4,17 +4,17 @@
     height: 34vh;
     border-radius: 200px;
     position: absolute;
-    top: 20%;
-    left: 13%;
+    top: 22.5%;
+    left: 13.05%;
     z-index: 1;
 }
 
 .background{
     background-color: white;
-    width: 75vw;
-    height: 65vh;
+    width: 70vw;
+    height: 50vh;
     position: absolute;
-    top: 25%;
+    top: 27%;
     left: 15%;
     border-radius: 25px;
 }
@@ -23,12 +23,24 @@
     font-family: 'Poppins', sans-serif;
     width: fit-content;
     position: absolute;
-    top: 15%;
-    left: 25%;
+    top: 10%;
+    left: 26%;
     background-color: none;
     border: none;
     font-size: 2.5vw;
     font-weight: bold;
+    color: #282828;
+}
+
+.namepen{
+    font-family: 'Poppins', sans-serif;
+    width: fit-content;
+    position: absolute;
+    top: 15%;
+    right: 28%;
+    background-color: none;
+    border: none;
+    font-size: 1.5vw;
     color: #282828;
 }
 
@@ -37,37 +49,81 @@
     width: fit-content;
     position: relative;
     display: flex;
-    top: 36%;
-    left: 47%;
-    background-color: none;
+    top: 30%;
+    left: 45%;
+    background-color: transparent;
     border: none;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     color: #282828;
 }
 
 #btn{
     font-family: 'Poppins', sans-serif;
-    width: 10vw;
+    width: 20vw;
     height: 5vh;
     position: absolute;
     top: 84%;
-    right: 6%;
-    background-color: #282828;
+    right: 3%;
+    background-color: #EE7154;
     border: none;
     border-radius: 10px;
     color: white;
     font-size: 1.3vw;
     font-weight: bold;
+    transition: transform 0.3s;
+}
+
+#btn:hover{
+    background-color: #282828;
+    border: #EE7154 2px solid;
+    color: white;
+    transform: scale(1.05);
 }
 
 .label{
     font-family: 'Poppins', sans-serif;
     width: fit-content;
     position: relative;
-    top: 43%;
-    left: 32%;
+    top: 39%;
+    left: 34%;
     background-color: none;
     border: none;
     font-size: 1.5vw;
     color: #282828;
+}
+
+.email{
+    margin-left: 3.5%;
+}
+
+.emailpen{
+    font-family: 'Poppins', sans-serif;
+    width: fit-content;
+    position: absolute;
+    top: 57.5%;
+    right: 27%;
+    background-color: none;
+    border: none;
+    font-size: 1.5vw;
+    color: #282828;
+}
+
+#error_msg{
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    position: relative;
+    top: 86%;
+    font-size: 1vw;
+    color: red;
+    text-align: center;
+}
+
+#msg{
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    position: relative;
+    top: 86%;
+    font-size: 1vw;
+    color: green;
+    text-align: center;
 }

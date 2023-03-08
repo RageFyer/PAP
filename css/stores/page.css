@@ -1,0 +1,44 @@
+#title{
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    top: 15vh;
+    left: 23.5vw;
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: white;
+}
+
+.container{
+    position: absolute;
+    display: flex;
+    text-align: center;
+    width: 100vw;
+    height: 40vh;
+    top: 43vh;
+}
+
+.href_stores{
+    margin-left: 8vw;
+    transition: transform .2s;
+    height: fit-content;
+}
+
+.backgroundstores{
+    width: 15vw;
+    height: 20vh;
+    border-radius: 5px;
+    background-color: #7c3b2c;
+}
+
+.stores{
+    width: 10vw;
+    margin-top: 8vh;
+}
+
+.ajusts{
+    margin-top: 6vh;
+}
+
+.href_stores:hover{
+    transform: scale(1.2);
+}

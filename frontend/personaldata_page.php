@@ -22,27 +22,29 @@
     </div>
 
     <div class="page">
-       <div class="user">
-            <img id="img" src="../img/user.png">
-            <span id="name"></span>
-            <form method="post">
-                <button type="submit" name="logout" id="log_out">terminar sessão <i class="fa-solid fa-right-from-bracket"></i></button>
-            </form>
-       </div>
-       <div class="buttons">
-            <a href="../frontend/changedata_page.php">
-                <div class="data">
-                    <i class="fa-solid fa-user icon"></i>
-                    <span class="text">Altere os dados da sua conta</span>
-                </div>
+        <div class="user">
+                <img id="img" src="../img/user.png">
+                <span id="name"></span>
+                <form method="post">
+                    <button type="submit" name="logout" id="log_out">terminar sessão <i class="fa-solid fa-right-from-bracket"></i></button>
+                </form>
+        </div>
+        <a class="mycomputers" href="../frontend/mycomputers_page.php">
+            <span class="computers_text">Os meus computadores</span>
+            <i class="fa-solid fa-desktop computer"></i>
+        </a>
+        <div class="container">
+            <a class="button" href="../frontend/changedata_page.php">
+                <i class="fa-solid fa-user icon"></i>
+                <span class="text edit">Editar dados</span>
             </a>
-            <a href="../frontend/changepass_page.php">
-                <div class="pass">
-                    <i class="fa-solid fa-lock icon"></i>
-                    <span class="text">Altere a sua palavra-passe</span>
-                </div>
+
+            <a class="button" href="../frontend/changepass_page.php">
+                <i class="fa-solid fa-lock icon"></i>
+                <span class="text">Alterar password</span>
             </a>
-       </div>
+        </div>
+        
     </div>
 
     <script>

@@ -1,0 +1,38 @@
+#title{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5vw;
+    text-align: center;
+    position: relative;
+    top: 14%;
+}
+
+table {
+    margin-top: 10%;
+    margin-left: 5%;
+    width: 90%;
+    border: #EE7154 1px solid;
+    color: #EE7154;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 0.5vw;
+}
+
+th{
+    background-color: #EE7154;
+    color: white;
+    font-size: 0.8vw;
+    font-weight: bold;
+}
+
+#left{
+    border-radius: 0.5vw 0 0 0;
+}
+
+#right{
+    border-radius: 0 0.5vw 0 0;
+}
+
+th, td {
+    padding: 1vw;
+    text-align: center;
+}
