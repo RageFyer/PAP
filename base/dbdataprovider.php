@@ -626,5 +626,80 @@ class DBDataprovider {
                 document.getElementById('save').style.border='none';</script>";
         }
     }
+
+    //function to verify all the compatibility of the pc
+    function verifyPc($cpu, $cooler, $motherboard, $ram, $graphics, $storage, $powersupply, $case){
+        $verification = 0;
+        $this->connect();
+        
+        $sql = "SELECT socket FROM cpus" . " WHERE name = '" . $cpu . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $cpu_socket = $row['socket'];
+
+        $sql = "SELECT GROUP_CONCAT(sockets.socket SEPARATOR ', ') as sockets
+        FROM coolers
+        INNER JOIN coolers_sockets ON coolers.id = coolers_sockets.cooler_id
+        INNER JOIN sockets ON coolers_sockets.socket_id = sockets.id
+        WHERE coolers.name = '" . $cooler . "';";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $cooler_socket = $row['socket'];
+
+        if($cpu_socket != $cooler_socket){
+            echo "<script>document.getElementById('byo_category3').createTextNode='O cooler não é compatível com o processador selecionado <br>';</script>";
+        }else{
+            $verification += 1;
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        $sql = "SELECT socket FROM motherboards" . " WHERE name = '" . $motherboard . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $motherboard_socket = $row['socket'];
+
+        if($cpu_socket != $motherboard_socket){
+            echo "<script>document.getElementById('byo_category4').createTextNode='A placa mãe não é compatível com o processador selecionado <br>';</script>";
+        }else{
+            $verification += 1;
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        $sql = "SELECT typeRam FROM motherboards" . " WHERE name = '" . $motherboard . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $motherboard_ram = $row['typeRam'];
+
+        $sql = "SELECT typeRam FROM rams" . " WHERE name = '" . $ram . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $ram_ram = $row['typeRam'];
+
+        if($motherboard_ram != $ram_ram){
+            echo "<script>document.getElementById('byo_category5').createTextNode='A memória não é compatível com a placa mãe selecionada <br>';</script>";
+        }else{
+            $verification += 1;
+        }
+
+        $sql = "SELECT dimensions FROM graphicscards" . " WHERE name = '" . $graphics . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $graphics_dimensions = $row['dimensions'];
+
+        $sql = "SELECT graphicsdime FROM cases" . " WHERE name = '" . $case . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $case_graphicsdime = $row['graphicsdime'];
+
+        if($graphics_dimensions > $case_graphicsdime){
+            echo "<script>document.getElementById('byo_category6').createTextNode='A placa gráfica não é compatível com a caixa selecionada <br>';</script>";
+        }else{
+            $verification += 1;
+        }
+
+        if ($verification == 4) {
+            echo "<script>document.getElementById('byo_category3').innerHTML='Tudo é compativel';</script>";
+        }
+    }
 }
 ?>

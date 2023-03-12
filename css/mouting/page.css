@@ -127,6 +127,29 @@ body{
     background-color: #282828;
 }
 
+#txt{
+    position: absolute;
+    top: 91%;
+    left: 13%;
+    width: 45%;
+    height: 5vh;
+    text-align: center;
+}
+
+#error_msg{
+    font-family: 'Poppins', sans-serif;
+    width: 50%;
+    height: 10vh;
+    color: red;
+}
+
+#good_msg{
+    font-family: 'Poppins', sans-serif;
+    width: 50%;
+    height: 10vh;
+    color: green;
+}
+
 #buttons{
     position: relative;
     top: 12%;

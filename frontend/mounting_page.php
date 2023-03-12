@@ -105,6 +105,10 @@
                 <button class="check"><i class="fa-solid fa-repeat"></i></button>
             </div>
         </div>
+        <div id="txt">
+            <span id="error_msg"></span>
+            <span id="good_msg"></span>
+        </div>
         <div id="buttons">
             <button id="verify">Verificar Compatibilidades</button>
             <button id="save">Guardar</button>
@@ -116,6 +120,7 @@
         const popup = document.querySelector('.popup');
         const confirmBtn = document.querySelectorAll('.confirm');
         const saveBtn = document.getElementById('save');
+        const verifyBtn = document.getElementById('verify');
 
         popup.addEventListener('click', function() {
             if (event.target.id == 'fechar-popup' || event.target.parentElement.id == 'fechar-popup') {
@@ -258,7 +263,37 @@
                 document.getElementById('btn').click(); 
             }
         });
-        var form = document.getElementById("myForm"); function handleForm(event) { event.preventDefault(); }  form.addEventListener('submit', handleForm);
+
+        verifyBtn.addEventListener('click', function() {
+            const cpu = document.querySelector('.byo_buildContainer.cpu .modelo').innerHTML;
+            const cooler = document.querySelector('.byo_buildContainer.cooler .modelo').innerHTML;
+            const motherboard = document.querySelector('.byo_buildContainer.motherboard .modelo').innerHTML;
+            const ram = document.querySelector('.byo_buildContainer.ram .modelo').innerHTML;
+            const graphics = document.querySelector('.byo_buildContainer.graphics .modelo').innerHTML;
+            const storage = document.querySelector('.byo_buildContainer.storage .modelo').innerHTML;
+            const powersupply = document.querySelector('.byo_buildContainer.powersupply .modelo').innerHTML;
+            const casee = document.querySelector('.byo_buildContainer.case .modelo').innerHTML;
+
+            if (cpu == '' || cooler == '' || motherboard == '' || ram == '' || graphics == '' || storage == '' || powersupply == '' || casee == '') {
+                document.getElementById('byo_category3').innerHTML = 'Tem que selecionar todas as peças!';
+            }else{
+                document.getElementById('cpu').value = cpu;
+                document.getElementById('cooler').value = cooler;
+                document.getElementById('motherboard').value = motherboard;
+                document.getElementById('ram').value = ram;
+                document.getElementById('graphics').value = graphics;
+                document.getElementById('storage').value = storage;
+                document.getElementById('powersupply').value = powersupply;
+                document.getElementById('case').value = casee;
+                
+                <?php
+                    $_SESSION['verify'] = true;
+                ?>
+
+                document.getElementById('btn').click(); 
+            }
+        });
+        var form = document.getElementById("myForm"); function handleForm(event) { event.preventDefault(); }
     </script>
 
     <?php
@@ -286,7 +321,12 @@
                 $storage = $_POST['storage'];
                 $powersupply = $_POST['powersupply'];
                 $case = $_POST['case'];
-                $dataprovider->sendPc($cpu, $cooler, $motherboard, $ram, $graphics, $storage, $powersupply, $case);
+                if(isset($_SESSION['verify'])){
+                    $_SESSION['verify'] = false;
+                    $dataprovider->verifyPc($cpu, $cooler, $motherboard, $ram, $graphics, $storage, $powersupply, $case);
+                }else{
+                    $dataprovider->sendPc($cpu, $cooler, $motherboard, $ram, $graphics, $storage, $powersupply, $case);
+                }
             }else{
                 echo "<script>
                 document.getElementById('save').onclick = function() {
