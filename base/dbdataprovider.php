@@ -627,7 +627,6 @@ class DBDataprovider {
         }
     }
 
-    //function to verify all the compatibility of the pc
     function verifyPc($cpu, $cooler, $motherboard, $ram, $graphics, $storage, $powersupply, $case){
         $verification = 0;
         $this->connect();
@@ -637,11 +636,11 @@ class DBDataprovider {
         $row = $resultset->fetch_assoc();
         $cpu_socket = $row['socket'];
 
-        $sql = "SELECT GROUP_CONCAT(sockets.socket SEPARATOR ', ') as sockets
-        FROM coolers
-        INNER JOIN coolers_sockets ON coolers.id = coolers_sockets.cooler_id
-        INNER JOIN sockets ON coolers_sockets.socket_id = sockets.id
-        WHERE coolers.name = '" . $cooler . "';";
+        $sql = "SELECT s.socket 
+        FROM sockets s
+        INNER JOIN coolers_sockets cs ON s.id = cs.socket_id
+        INNER JOIN coolers c ON c.id = cs.cooler_id
+        WHERE c.name = '" . $cooler . "'";
         $resultset = mysqli_query($this->conn, $sql);
         $row = $resultset->fetch_assoc();
         $cooler_socket = $row['socket'];
@@ -700,6 +699,52 @@ class DBDataprovider {
         if ($verification == 4) {
             echo "<script>document.getElementById('byo_category3').innerHTML='Tudo é compativel';</script>";
         }
+    }
+
+    function getPrice($cpu, $cooler, $motherboard, $ram, $graphics, $storage, $powersupply, $case){
+        $this->connect();
+        $sql = "SELECT price FROM cpus" . " WHERE name = '" . $cpu . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $cpu_price = $row['price'];
+
+        $sql = "SELECT price FROM coolers" . " WHERE name = '" . $cooler . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $cooler_price = $row['price'];
+
+        $sql = "SELECT price FROM motherboards" . " WHERE name = '" . $motherboard . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $motherboard_price = $row['price'];
+
+        $sql = "SELECT price FROM rams" . " WHERE name = '" . $ram . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $ram_price = $row['price'];
+
+        $sql = "SELECT price FROM graphicscards" . " WHERE name = '" . $graphics . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $graphics_price = $row['price'];
+
+        $sql = "SELECT price FROM storages" . " WHERE name = '" . $storage . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $storage_price = $row['price'];
+
+        $sql = "SELECT price FROM powersupplys" . " WHERE name = '" . $powersupply . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $powersupply_price = $row['price'];
+
+        $sql = "SELECT price FROM cases" . " WHERE name = '" . $case . "'";
+        $resultset = mysqli_query($this->conn, $sql);
+        $row = $resultset->fetch_assoc();
+        $case_price = $row['price'];
+        
+        $total_price = $cpu_price + $cooler_price + $motherboard_price + $ram_price + $graphics_price + $storage_price + $powersupply_price + $case_price;
+        echo $total_price;
     }
 }
 ?>

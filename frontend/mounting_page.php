@@ -106,8 +106,7 @@
             </div>
         </div>
         <div id="txt">
-            <span id="error_msg"></span>
-            <span id="good_msg"></span>
+            <span id="price_warning">Preço: <?php ?></span>
         </div>
         <div id="buttons">
             <button id="verify">Verificar Compatibilidades</button>

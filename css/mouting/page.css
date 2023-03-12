@@ -133,21 +133,15 @@ body{
     left: 13%;
     width: 45%;
     height: 5vh;
-    text-align: center;
+    text-align: left;
 }
 
-#error_msg{
+#price_warning{
     font-family: 'Poppins', sans-serif;
     width: 50%;
     height: 10vh;
-    color: red;
-}
-
-#good_msg{
-    font-family: 'Poppins', sans-serif;
-    width: 50%;
-    height: 10vh;
-    color: green;
+    color: white;
+    font-size: 1.5vw;
 }
 
 #buttons{
