@@ -636,19 +636,20 @@ class DBDataprovider {
         $row = $resultset->fetch_assoc();
         $cpu_socket = $row['socket'];
 
-        $sql = "SELECT s.socket 
-        FROM sockets s
-        INNER JOIN coolers_sockets cs ON s.id = cs.socket_id
-        INNER JOIN coolers c ON c.id = cs.cooler_id
-        WHERE c.name = '" . $cooler . "'";
+       $sql = "SELECT coolers.*, GROUP_CONCAT(sockets.socket SEPARATOR ', ') as sockets
+        FROM coolers
+        INNER JOIN coolers_sockets ON coolers.id = coolers_sockets.cooler_id
+        INNER JOIN sockets ON coolers_sockets.socket_id = sockets.id
+        GROUP BY coolers.id;";
         $resultset = mysqli_query($this->conn, $sql);
-        $row = $resultset->fetch_assoc();
-        $cooler_socket = $row['socket'];
 
-        if($cpu_socket != $cooler_socket){
-            echo "<script>document.getElementById('byo_category3').createTextNode='O cooler não é compatível com o processador selecionado <br>';</script>";
-        }else{
-            $verification += 1;
+        while ($row = $resultset->fetch_assoc()) {
+            $cooler_sockets = explode(', ', $row['sockets']);
+            if (in_array($cpu_socket, $cooler_sockets)) {
+                $verification += 1;
+            } else {
+                echo "<script>document.getElementById('byo_category3').createTextNode='O cooler não é compatível com o processador selecionado <br>';</script>";
+            }
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
