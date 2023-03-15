@@ -650,7 +650,6 @@ class DBDataprovider {
 
         while ($row = $resultset->fetch_assoc()) {
             $cooler_sockets = explode(', ', $row['sockets']);
-
             for ($i = 0; $i < count($cooler_sockets); $i++) {
                 if ($cooler_sockets[$i] == $cpu_socket) {
                     $verification += 1;
@@ -659,12 +658,7 @@ class DBDataprovider {
         }
 
         if ($verification == 0) {
-            echo "<script>document.getElementById('byo_category3').textContent += 'O cooler não é compatível com o processador selecionado / ';</script>";
-            if (in_array($cpu_socket, $cooler_sockets)) {
-                $verification += 1;
-            } else {
-                echo "<script>document.getElementById('byo_category3').createTextNode='O cooler não é compatível com o processador selecionado <br>';</script>";
-            }
+            echo "<script>document.getElementById('byo_category3').textContent='O cooler não é compatível com o processador selecionado <br>';</script>";
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
