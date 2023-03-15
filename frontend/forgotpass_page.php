@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/window.css">
     <link rel="stylesheet" href="../css/forgotpass/page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Login - Build Your Own</title>
+    <title>Recuprar - Build Your Own</title>
 </head>
 <body>
     <a href="../frontend/login_page.php">
@@ -21,12 +21,40 @@
         <form method="POST">
             <div class="input">
                 <p>Email</p>
-                <input type="text" name="user" id="user">
+                <input type="text" name="email" id="user">
             </div>
             <div class="input">
                 <input id="submit" type="submit" value="Repor palavra-pass">
             </div>
         </form>
     </div>
+    <script>
+        let close = document.getElementsByClassName("closebtn");
+        let i;
+
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function(){
+                let div = this.parentElement;
+                div.style.opacity = "0";
+                setTimeout(function(){ div.style.display = "none"; }, 600);
+            }
+        }
+    </script>
+    <?php
+        session_start();
+        include("../base/dbdataprovider.php");
+
+        if ($_SERVER['REQUEST_METHOD'] ===  "POST"){
+            $email = $_POST['email'];
+
+            if(empty($email)){
+                echo '<script>document.getElementById("message").textContent="Email Obrigatório"; document.getElementById("alert").style.display = "block"</script>';
+                session_destroy();
+            }else{
+                $dataprovider = new DBDataprovider();
+                $dataprovider->sendEmail($email);
+            }
+        }
+    ?>
 </body>
 </html>

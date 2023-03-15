@@ -102,3 +102,11 @@ input{
     background-color: #161616;
     color: white;
 }
+
+#success{
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    color : green;
+    border-radius: 10px;
+}

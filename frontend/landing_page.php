@@ -46,68 +46,68 @@
             <div class="byo_container">
                 <div class="byo_card">
                     <div class="build_img">
-                        <img src="../img/img1.jpg" class="card_img" alt="">
+                        <img src="https://static.pcdiga.com/media/catalog/product/cache/4a9972e1440204cef7cf19ceb7c4fc35/s/9/s9a0d99s_1.jpg" class="card_img" alt="">
+                    </div>
+                    <div class="byo_cardinfo">
+                        <p class="build_name">Computador OMEN by HP 25L Gaming Desktop GT15-0003np</p>
+                        <p class="build_settings">Intel Core i7-12700F | W11 Home | 16GB RAM | GeForce RTX 3060 Ti | SSD 1TB</p><br>
+                        <span class="price">1799 €</span><br>
+                        <a href="https://www.pcdiga.com/computadores-e-software/computadores-desktop/computadores-gaming/computador-omen-by-hp-25l-gaming-desktop-gt15-0003np-6l0n3ea-ab9-196786171345"><button class="card_btn">Saber mais</button></a>
+                    </div>
+                </div>
+                <div class="byo_card">
+                    <div class="build_img">
+                        <img src="https://static.pcdiga.com/media/catalog/product/cache/4a9972e1440204cef7cf19ceb7c4fc35/1/_/1_p047885_3.jpg" class="card_img" alt="">
+                    </div>
+                    <div class="byo_cardinfo">
+                        <p class="build_name">Computador Desktop Lenovo Legion T5 26IAB7-880</p>
+                        <p class="build_settings">Intel Core i7-12700F | Sistema Operativo Não Incluído | 16GB RAM | GeForce RTX 3060 | SSD 512GB</p><br>
+                        <span class="price">1399 €</span><br>
+                        <a href="https://www.pcdiga.com/computadores-e-software/computadores-desktop/computadores-gaming/computador-desktop-lenovo-legion-t5-26iab7-880-90sv00d5pg-196800505880"><button class="card_btn">Saber mais</button></a>
+                    </div>
+                </div>
+                <div class="byo_card">
+                    <div class="build_img">
+                        <img src="https://static.pcdiga.com/media/catalog/product/cache/4a9972e1440204cef7cf19ceb7c4fc35/p/0/p045867_1.jpg" class="card_img" alt="">
                     </div>
                     <div class="byo_cardinfo">
                         <p class="build_name">Computador Desktop MSI MAG Codex 5 12TC-1478ES</p>
-                        <p class="build_settings">Intel Core i5-12400F | Sistema Operativo Não Incluído | 16GB RAM | GeForce RTX 3060 | SSD 512GB + HDD 1TB</p><br>
-                        <span class="price">1000 €</span><br>
+                        <p class="build_settings">AMD Ryzen 5 5600X | Free DOS | 16GB RAM | Radeon RX 6600 XT | SSD 512GB | HDD 1TB</p><br>
+                        <span class="price">1299 €</span><br>
                         <a href=""><button class="card_btn">Saber mais</button></a>
                     </div>
                 </div>
                 <div class="byo_card">
                     <div class="build_img">
-                        <img src="../img/img1.jpg" class="card_img" alt="">
+                        <img src="https://img.globaldata.pt/products/KM22-ASUS-211.jpg?auto=compress%2Cformat&fit=fill&fill-color=fff&q=70&fill=solid&w=805&h=805" class="card_img" alt="">
                     </div>
                     <div class="byo_cardinfo">
-                        <p class="build_name">Computador Desktop MSI MAG Codex 5 12TC-1478ES</p>
-                        <p class="build_settings">Intel Core i5-12400F | Sistema Operativo Não Incluído | 16GB RAM | GeForce RTX 3060 | SSD 512GB + HDD 1TB</p><br>
-                        <span class="price">1000 €</span><br>
-                        <a href=""><button class="card_btn">Saber mais</button></a>
+                        <p class="build_name">Computador King Mod Gamer ASUS R5</p>
+                        <p class="build_settings">AMD Ryzen 5 3600 | 16GB DDR4 | SSD 512GB | GTX 1660 Ti</p><br>
+                        <span class="price">898 €</span><br>
+                        <a href="https://www.globaldata.pt/computador-king-mod-gamer-asus-r5-16gb-512gb-gtx-1660-ti-w10-km22-asus-211"><button class="card_btn">Saber mais</button></a>
                     </div>
                 </div>
                 <div class="byo_card">
                     <div class="build_img">
-                        <img src="../img/img1.jpg" class="card_img" alt="">
+                        <img src="https://img.globaldata.pt/products/KM22-LTD-021.jpg?auto=compress%2Cformat&fit=fill&fill-color=fff&q=70&fill=solid&w=805&h=805" class="card_img" alt="">
                     </div>
                     <div class="byo_cardinfo">
-                        <p class="build_name">Computador Desktop MSI MAG Codex 5 12TC-1478ES</p>
-                        <p class="build_settings">Intel Core i5-12400F | Sistema Operativo Não Incluído | 16GB RAM | GeForce RTX 3060 | SSD 512GB + HDD 1TB</p><br>
-                        <span class="price">1000 €</span><br>
-                        <a href=""><button class="card_btn">Saber mais</button></a>
+                        <p class="build_name">Computador King Mod Limited Liquid R7</p>
+                        <p class="build_settings">Ryzen 7 3800XT | 32GB DDR4 | SSD 1TB | HDD 2TB | RTX 2070</p><br>
+                        <span class="price">2999 €</span><br>
+                        <a href="https://www.globaldata.pt/computador-king-mod-limited-liquid-r7-3800xt-16gb-1tb-2tb-rtx-2070-super-km22-ltd-021"><button class="card_btn">Saber mais</button></a>
                     </div>
                 </div>
                 <div class="byo_card">
                     <div class="build_img">
-                        <img src="../img/img1.jpg" class="card_img" alt="">
+                        <img src="https://img.globaldata.pt/products/KML22-EKHYDRA.jpg?auto=compress%2Cformat&fit=fill&fill-color=fff&q=70&fill=solid&w=805&h=805" class="card_img" alt="">
                     </div>
                     <div class="byo_cardinfo">
-                        <p class="build_name">Computador Desktop MSI MAG Codex 5 12TC-1478ES</p>
-                        <p class="build_settings">Intel Core i5-12400F | Sistema Operativo Não Incluído | 16GB RAM | GeForce RTX 3060 | SSD 512GB + HDD 1TB</p><br>
-                        <span class="price">1000 €</span><br>
-                        <a href=""><button class="card_btn">Saber mais</button></a>
-                    </div>
-                </div>
-                <div class="byo_card">
-                    <div class="build_img">
-                        <img src="../img/img1.jpg" class="card_img" alt="">
-                    </div>
-                    <div class="byo_cardinfo">
-                        <p class="build_name">Computador Desktop MSI MAG Codex 5 12TC-1478ES</p>
-                        <p class="build_settings">Intel Core i5-12400F | Sistema Operativo Não Incluído | 16GB RAM | GeForce RTX 3060 | SSD 512GB + HDD 1TB</p><br>
-                        <span class="price">1000 €</span><br>
-                        <a href=""><button class="card_btn">Saber mais</button></a>
-                    </div>
-                </div>
-                <div class="byo_card">
-                    <div class="build_img">
-                        <img src="../img/img1.jpg" class="card_img" alt="">
-                    </div>
-                    <div class="byo_cardinfo">
-                        <p class="build_name">Computador Desktop MSI MAG Codex 5 12TC-1478ES</p>
-                        <p class="build_settings">Intel Core i5-12400F | Sistema Operativo Não Incluído | 16GB RAM | GeForce RTX 3060 | SSD 512GB + HDD 1TB</p><br>
-                        <span class="price">1000 €</span><br>
-                        <a href=""><button class="card_btn">Saber mais</button></a>
+                        <p class="build_name">Computador King Mod Liquid EKWB Hydra R7</p>
+                        <p class="build_settings">AMD Ryzen 7 5800X | 16GB DDR4 | SSD 512GB | RTX 3060 Ti</p><br>
+                        <span class="price">2599 €</span><br>
+                        <a href="https://www.globaldata.pt/computador-king-mod-liquid-ekwb-hydra-r7-16gb-512gb-rtx-3060-ti-w10-kml22-ekhydra"><button class="card_btn">Saber mais</button></a>
                     </div>
                 </div>
             </div>

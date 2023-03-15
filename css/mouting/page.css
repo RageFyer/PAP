@@ -43,6 +43,23 @@ body{
     animation-fill-mode: forwards;
 }
 
+#byo_category4{
+    font-family: 'Poppins', sans-serif;
+    color: green;
+    width: 100vw;
+    position: absolute;
+    top: 11%;
+    -moz-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
 @keyframes cssAnimation {
     0%   {opacity: 1;}
     90%  {opacity: 1;}

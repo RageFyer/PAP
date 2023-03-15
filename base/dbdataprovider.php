@@ -3,12 +3,13 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-//require 'C:wamp64\composer\vendor\autoload.php';
+require 'C:wamp64\composer\vendor\autoload.php';
 
 
 class DBDataprovider {
     private $conn;
-    
+    private $verification = 0;
+
     function connect(){
         $db = parse_ini_file("db_config.ini");
         $this->conn = mysqli_connect($db['host'], $db['user'], $db['password'], $db['dbname']);
@@ -617,10 +618,14 @@ class DBDataprovider {
 
 
         if ($resultset) {
+            echo "<script>document.getElementById('byo_category4').innerHTML='Computador Guardado';";
+
             echo "<script>document.getElementById('save').innerHTML='<i class=\"fa-solid fa-check\"></i>';
                 document.getElementById('save').style.backgroundColor='green';
                 document.getElementById('save').style.border='none';</script>";
         } else {
+            echo "<script>document.getElementById('byo_category4').innerHTML='Não foi possivel guardar o seu computador';";
+            
             echo "<script>document.getElementById('save').innerHTML='<i class=\"fa-solid fa-xmark\"></i>';
                 document.getElementById('save').style.backgroundColor='red';
                 document.getElementById('save').style.border='none';</script>";
@@ -645,11 +650,15 @@ class DBDataprovider {
 
         while ($row = $resultset->fetch_assoc()) {
             $cooler_sockets = explode(', ', $row['sockets']);
-            if (in_array($cpu_socket, $cooler_sockets)) {
-                $verification += 1;
-            } else {
-                echo "<script>document.getElementById('byo_category3').createTextNode='O cooler não é compatível com o processador selecionado <br>';</script>";
+            for ($i = 0; $i < count($cooler_sockets); $i++) {
+                if ($cooler_sockets[$i] == $cpu_socket) {
+                    $verification += 1;
+                }
             }
+        }
+
+        if ($verification == 0) {
+            echo "<script>document.getElementById('byo_category3').textContent += 'O cooler não é compatível com o processador selecionado / ';</script>";
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -659,7 +668,7 @@ class DBDataprovider {
         $motherboard_socket = $row['socket'];
 
         if($cpu_socket != $motherboard_socket){
-            echo "<script>document.getElementById('byo_category4').createTextNode='A placa mãe não é compatível com o processador selecionado <br>';</script>";
+            echo "<script>document.getElementById('byo_category3').textContent += 'A placa mãe não é compatível com o processador selecionado / ';</script>";
         }else{
             $verification += 1;
         }
@@ -676,7 +685,7 @@ class DBDataprovider {
         $ram_ram = $row['typeRam'];
 
         if($motherboard_ram != $ram_ram){
-            echo "<script>document.getElementById('byo_category5').createTextNode='A memória não é compatível com a placa mãe selecionada <br>';</script>";
+            echo "<script>document.getElementById('byo_category3').textContent += 'A memória não é compatível com a placa mãe selecionada / ';</script>";
         }else{
             $verification += 1;
         }
@@ -692,13 +701,13 @@ class DBDataprovider {
         $case_graphicsdime = $row['graphicsdime'];
 
         if($graphics_dimensions > $case_graphicsdime){
-            echo "<script>document.getElementById('byo_category6').createTextNode='A placa gráfica não é compatível com a caixa selecionada <br>';</script>";
+            echo "<script>document.getElementById('byo_category3').textContent += 'A placa gráfica não é compatível com a caixa selecionada / ';</script>";
         }else{
             $verification += 1;
         }
 
         if ($verification == 4) {
-            echo "<script>document.getElementById('byo_category3').innerHTML='Tudo é compativel';</script>";
+            echo "<script>document.getElementById('byo_category4').textContent += 'Tudo é compativel';</script>";
         }
     }
 
@@ -746,6 +755,65 @@ class DBDataprovider {
         
         $total_price = $cpu_price + $cooler_price + $motherboard_price + $ram_price + $graphics_price + $storage_price + $powersupply_price + $case_price;
         echo $total_price;
+    }
+
+    function sendEmail($email){
+        $this->connect();
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $resultset = mysqli_query($this->conn, $sql);
+        if(mysqli_num_rows($resultset) > 0){
+            $emailencripted = base64_encode($email);
+            $mail = new PHPMailer();
+            $mail->IsSMTP();
+            $mail->SMTPAuth = true; 
+            $mail->SMTPSecure = 'tls'; 
+
+            $mail->Host = 'smtp.sapo.pt';
+            $mail->Port = 587;
+            $mail->Username = 'Build Your Own';
+            $mail->Password = 'Buildyourown.123';
+
+            $mail->SetFrom('buildyourown.inc@sapo.pt', 'Build Your Own991531');
+            $mail->CharSet = 'UTF-8';
+            $mail->Encoding = 'base64';
+            $mail->Subject = 'Build Your Own - Recuperação de Password';
+
+            $mail->IsHTML(true);
+            $mail->Body = "Olá,<br><br> Para recuperar a sua password, clique no link abaixo:<br><br><a href='http://localhost/PAP/resetpass_page.php?key=".$emailencripted."'>RECUPERAR PALAVRAPASS</a><br><br>Obrigado,<br><br>Build Your Own";
+
+            $mail->AddAddress($email);
+
+            if(!$mail->Send()){
+                echo 'Erro do email: ' .$mail->ErrorInfo;
+            }else{
+                echo '<script>document.getElementById("success").style.display = "block"</script>';
+                $_SESSION['email'] = $email;
+                $this->disconnect();
+                session_destroy();
+            }
+        }else{
+            echo '<script>document.getElementById("message").textContent="Este email não está registado"; document.getElementById("alert").style.display = "block"</script>';
+            $this->disconnect();
+            session_destroy();
+        }
+    }
+
+    function resetPassword($password){
+        $this->connect();
+        if($_GET['key']){
+            $emailunencripted = base64_decode($_GET['key']);
+            $sql = "UPDATE users SET password = '$password' WHERE email = '$emailunencripted'";
+            $resultset = mysqli_query($this->conn, $sql);
+            if($resultset){
+                echo '<script>document.getElementById("success").style.display = "block"</script>';
+                $this->disconnect();
+                session_destroy();
+            }else{
+                echo '<script>document.getElementById("message").textContent="Erro ao alterar password"; document.getElementById("alert").style.display = "block"</script>';
+                $this->disconnect();
+                session_destroy();
+            }
+        }
     }
 }
 ?>

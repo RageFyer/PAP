@@ -40,6 +40,7 @@
     <div class="byo_scrolled">
         <h2 class="byo_category2">DÁ ASAS À TUA MONTAGEM!</h2>
         <p id="byo_category3"></p>
+        <p id="byo_category4"></p>
 
         <form id="form" method="POST" >
             <input type="hidden" name="cpu" id="cpu">
