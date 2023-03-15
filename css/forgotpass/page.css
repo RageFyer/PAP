@@ -104,9 +104,37 @@ input{
 }
 
 #success{
+    font-family: 'Poppins', sans-serif;
     position: absolute;
-    top: 40%;
+    top: 34%;
     left: 35%;
-    color : green;
+    color: #EE7154;
+    font-size: 1vw;
+    width: 30%;
+    height: 3%;
     border-radius: 10px;
+    text-align: center;
+    display: none;
+}
+
+#alert{
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    top: 34%;
+    left: 35%;
+    color: #EE7154;
+    font-size: 1vw;
+    width: 30%;
+    height: 3%;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+}
+
+.closebtn{
+    color: red;
+}
+
+.closebtn:hover{
+    cursor: pointer;
 }

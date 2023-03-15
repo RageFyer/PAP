@@ -3,7 +3,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'C:wamp64\composer\vendor\autoload.php';
+require 'F:xampp\vendor\autoload.php';
 
 
 class DBDataprovider {
@@ -761,7 +761,7 @@ class DBDataprovider {
         $this->connect();
         $sql = "SELECT * FROM users WHERE email = '$email'";
         $resultset = mysqli_query($this->conn, $sql);
-        if(mysqli_num_rows($resultset) > 0){
+        if(mysqli_num_rows($resultset) > 0){ 
             $emailencripted = base64_encode($email);
             $mail = new PHPMailer();
             $mail->IsSMTP();
@@ -773,7 +773,7 @@ class DBDataprovider {
             $mail->Username = 'Build Your Own';
             $mail->Password = 'Buildyourown.123';
 
-            $mail->SetFrom('buildyourown.inc@sapo.pt', 'Build Your Own991531');
+            $mail->SetFrom('buildyourown.inc@sapo.pt', 'Build Your Own');
             $mail->CharSet = 'UTF-8';
             $mail->Encoding = 'base64';
             $mail->Subject = 'Build Your Own - Recuperação de Password';

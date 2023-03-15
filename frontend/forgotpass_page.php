@@ -17,6 +17,14 @@
         <a href="../frontend/landing_page.php"><img id="byo_logo" src="../img/BYO_LOGO.png"></a>
     </a>
     <p id="forgottxt">Esqueceste-te da palavra-pass?</p>
+    <div id="success">
+        <span class="closebtn" onclick="this.parentElement.style.display='nome';">&times;</span>
+        <span>Foi-lhe enviado um email para mais informações.</span>
+    </div>
+    <div id="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='nome';">&times;</span>
+        <span id="message"></span>
+    </div>
     <div class="container">
         <form method="POST">
             <div class="input">
