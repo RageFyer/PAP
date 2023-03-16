@@ -293,7 +293,7 @@
                 document.getElementById('btn').click(); 
             }
         });
-        var form = document.getElementById("myForm"); function handleForm(event) { event.preventDefault(); }
+        document.getElementById("form"); function handleForm(event) { event.preventDefault(); }
     </script>
 
     <?php

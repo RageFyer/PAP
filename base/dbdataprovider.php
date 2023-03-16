@@ -641,24 +641,25 @@ class DBDataprovider {
         $row = $resultset->fetch_assoc();
         $cpu_socket = $row['socket'];
 
-       $sql = "SELECT coolers.*, GROUP_CONCAT(sockets.socket SEPARATOR ', ') as sockets
+        $sql = "SELECT coolers.*, GROUP_CONCAT(sockets.socket SEPARATOR ', ') as sockets
         FROM coolers
         INNER JOIN coolers_sockets ON coolers.id = coolers_sockets.cooler_id
         INNER JOIN sockets ON coolers_sockets.socket_id = sockets.id
+        WHERE coolers.name = '$cooler'
         GROUP BY coolers.id;";
         $resultset = mysqli_query($this->conn, $sql);
 
         while ($row = $resultset->fetch_assoc()) {
             $cooler_sockets = explode(', ', $row['sockets']);
-            for ($i = 0; $i < count($cooler_sockets); $i++) {
-                if ($cooler_sockets[$i] == $cpu_socket) {
-                    $verification += 1;
+            foreach ($cooler_sockets as $cooler_socket) {
+                if ($cooler_socket == $cpu_socket) {
+                    $verification++;
                 }
             }
         }
 
         if ($verification == 0) {
-            echo "<script>document.getElementById('byo_category3').textContent='O cooler não é compatível com o processador selecionado <br>';</script>";
+            echo "<script>document.getElementById('byo_category3').textContent +='O cooler não é compatível com o processador selecionado ';</script>";
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -668,9 +669,9 @@ class DBDataprovider {
         $motherboard_socket = $row['socket'];
 
         if($cpu_socket != $motherboard_socket){
-            echo "<script>document.getElementById('byo_category3').textContent += 'A placa mãe não é compatível com o processador selecionado / ';</script>";
+            echo "<script>document.getElementById('byo_category3').textContent += 'A placa mãe não é compatível com o processador selecionado ';</script>";
         }else{
-            $verification += 1;
+            $verification++;
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -685,9 +686,9 @@ class DBDataprovider {
         $ram_ram = $row['typeRam'];
 
         if($motherboard_ram != $ram_ram){
-            echo "<script>document.getElementById('byo_category3').textContent += 'A memória não é compatível com a placa mãe selecionada / ';</script>";
+            echo "<script>document.getElementById('byo_category3').textContent += 'A memória não é compatível com a placa mãe selecionada ';</script>";
         }else{
-            $verification += 1;
+            $verification++;
         }
 
         $sql = "SELECT dimensions FROM graphicscards" . " WHERE name = '" . $graphics . "'";
@@ -701,9 +702,9 @@ class DBDataprovider {
         $case_graphicsdime = $row['graphicsdime'];
 
         if($graphics_dimensions > $case_graphicsdime){
-            echo "<script>document.getElementById('byo_category3').textContent += 'A placa gráfica não é compatível com a caixa selecionada / ';</script>";
+            echo "<script>document.getElementById('byo_category3').textContent += 'A placa gráfica não é compatível com a caixa selecionada ';</script>";
         }else{
-            $verification += 1;
+            $verification++;
         }
 
         if ($verification == 4) {
