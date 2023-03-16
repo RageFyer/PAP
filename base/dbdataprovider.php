@@ -712,52 +712,6 @@ class DBDataprovider {
         }
     }
 
-    function getPrice($cpu, $cooler, $motherboard, $ram, $graphics, $storage, $powersupply, $case){
-        $this->connect();
-        $sql = "SELECT price FROM cpus" . " WHERE name = '" . $cpu . "'";
-        $resultset = mysqli_query($this->conn, $sql);
-        $row = $resultset->fetch_assoc();
-        $cpu_price = $row['price'];
-
-        $sql = "SELECT price FROM coolers" . " WHERE name = '" . $cooler . "'";
-        $resultset = mysqli_query($this->conn, $sql);
-        $row = $resultset->fetch_assoc();
-        $cooler_price = $row['price'];
-
-        $sql = "SELECT price FROM motherboards" . " WHERE name = '" . $motherboard . "'";
-        $resultset = mysqli_query($this->conn, $sql);
-        $row = $resultset->fetch_assoc();
-        $motherboard_price = $row['price'];
-
-        $sql = "SELECT price FROM rams" . " WHERE name = '" . $ram . "'";
-        $resultset = mysqli_query($this->conn, $sql);
-        $row = $resultset->fetch_assoc();
-        $ram_price = $row['price'];
-
-        $sql = "SELECT price FROM graphicscards" . " WHERE name = '" . $graphics . "'";
-        $resultset = mysqli_query($this->conn, $sql);
-        $row = $resultset->fetch_assoc();
-        $graphics_price = $row['price'];
-
-        $sql = "SELECT price FROM storages" . " WHERE name = '" . $storage . "'";
-        $resultset = mysqli_query($this->conn, $sql);
-        $row = $resultset->fetch_assoc();
-        $storage_price = $row['price'];
-
-        $sql = "SELECT price FROM powersupplys" . " WHERE name = '" . $powersupply . "'";
-        $resultset = mysqli_query($this->conn, $sql);
-        $row = $resultset->fetch_assoc();
-        $powersupply_price = $row['price'];
-
-        $sql = "SELECT price FROM cases" . " WHERE name = '" . $case . "'";
-        $resultset = mysqli_query($this->conn, $sql);
-        $row = $resultset->fetch_assoc();
-        $case_price = $row['price'];
-        
-        $total_price = $cpu_price + $cooler_price + $motherboard_price + $ram_price + $graphics_price + $storage_price + $powersupply_price + $case_price;
-        echo $total_price;
-    }
-
     function sendEmail($email){
         $this->connect();
         $sql = "SELECT * FROM users WHERE email = '$email'";

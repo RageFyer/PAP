@@ -21,6 +21,18 @@
     <title>Montar</title>
 </head>
 <body>
+
+    <script>
+        let cpuprice = 0;
+        let coolerprice = 0;
+        let motherboardprice = 0;
+        let ramprice = 0;
+        let graphicsprice = 0;
+        let storageprice = 0;
+        let powersupplyprice = 0;
+        let caseprice = 0;
+    </script>
+
     <div class="byo_header">
         <a href="../frontend/mounting_page.php"><span class="byo_navigation montar" onClick="document.getElementsByClassName('byo_scrolled')[0].scrollIntoView();">MONTAR</span></a>
         <a href="../frontend/landing_page.php"><img id="byo_logo" src="../img/BYO_LOGO.png"></a>
@@ -107,10 +119,25 @@
             </div>
         </div>
         <div id="txt">
-            <span id="price_warning">Preço: <?php 
-                
+            <span id="price_warning"> 
+                <script>
+                    setInterval(function() {
+                        cpuprice = parseFloat(cpuprice);
+                        coolerprice = parseFloat(coolerprice);
+                        motherboardprice = parseFloat(motherboardprice);
+                        ramprice = parseFloat(ramprice);
+                        graphicsprice = parseFloat(graphicsprice);
+                        storageprice = parseFloat(storageprice);
+                        powersupplyprice = parseFloat(powersupplyprice);
+                        caseprice = parseFloat(caseprice);
 
-            ?></span>
+                        let total = cpuprice + coolerprice + motherboardprice + ramprice + graphicsprice + storageprice + powersupplyprice + caseprice;
+
+                        let formattedTotal = total.toLocaleString("pt-PT", { style: "currency", currency: "EUR", minimumFractionDigits: 2 });
+                        document.getElementById("price_warning").innerHTML = "Preço total: " + formattedTotal;
+                    }, 0);            
+                </script>
+            </span>
         </div>
         <div id="buttons">
             <button id="verify">Verificar Compatibilidades</button>
@@ -180,53 +207,60 @@
                 const img = parent.querySelector('.img');
                 const modelo = parent.querySelector('.name');
 
-
                 if (popup.classList.contains('cpu')) {
                     const buildContainer = document.querySelector('.byo_buildContainer.cpu');
                     const piece = buildContainer.querySelector('.piece');
                     const modeloPiece = buildContainer.querySelector('.modelo');
+                    cpuprice = parent.querySelector('.price').innerHTML.replace(/€/g, "");
                     piece.src = img.src;
                     modeloPiece.innerHTML = modelo.innerHTML;
                 }else if (popup.classList.contains('cooler')) {
                     const buildContainer = document.querySelector('.byo_buildContainer.cooler');
                     const piece = buildContainer.querySelector('.piece');
                     const modeloPiece = buildContainer.querySelector('.modelo');
+                    coolerprice = parent.querySelector('.price').innerHTML.replace(/€/g, "");
                     piece.src = img.src;
                     modeloPiece.innerHTML = modelo.innerHTML;
                 }else if (popup.classList.contains('motherboard')) {
                     const buildContainer = document.querySelector('.byo_buildContainer.motherboard');
                     const piece = buildContainer.querySelector('.piece');
                     const modeloPiece = buildContainer.querySelector('.modelo');
+                    motherboardprice = parent.querySelector('.price').innerHTML.replace(/€/g, "");
                     piece.src = img.src;
                     modeloPiece.innerHTML = modelo.innerHTML;
                 }else if (popup.classList.contains('ram')) {
                     const buildContainer = document.querySelector('.byo_buildContainer.ram');
                     const piece = buildContainer.querySelector('.piece');
                     const modeloPiece = buildContainer.querySelector('.modelo');
+                    ramprice = parent.querySelector('.price').innerHTML.replace(/€/g, "");
                     piece.src = img.src;
                     modeloPiece.innerHTML = modelo.innerHTML;
                 }else if (popup.classList.contains('graphics')) {
                     const buildContainer = document.querySelector('.byo_buildContainer.graphics');
                     const piece = buildContainer.querySelector('.piece');
                     const modeloPiece = buildContainer.querySelector('.modelo');
+                    graphicsprice = parent.querySelector('.price').innerHTML.replace(/€/g, "");
                     piece.src = img.src;
                     modeloPiece.innerHTML = modelo.innerHTML;
                 }else if (popup.classList.contains('storage')) {
                     const buildContainer = document.querySelector('.byo_buildContainer.storage');
                     const piece = buildContainer.querySelector('.piece');
                     const modeloPiece = buildContainer.querySelector('.modelo');
+                    storageprice = parent.querySelector('.price').innerHTML.replace(/€/g, "");
                     piece.src = img.src;
                     modeloPiece.innerHTML = modelo.innerHTML;
                 }else if (popup.classList.contains('powersupply')) {
                     const buildContainer = document.querySelector('.byo_buildContainer.powersupply');
                     const piece = buildContainer.querySelector('.piece');
                     const modeloPiece = buildContainer.querySelector('.modelo');
+                    powersupplyprice = parent.querySelector('.price').innerHTML.replace(/€/g, "");
                     piece.src = img.src;
                     modeloPiece.innerHTML = modelo.innerHTML;
                 }else if (popup.classList.contains('case')) {
                     const buildContainer = document.querySelector('.byo_buildContainer.case');
                     const piece = buildContainer.querySelector('.piece');
                     const modeloPiece = buildContainer.querySelector('.modelo');
+                    caseprice = parent.querySelector('.price').innerHTML.replace(/€/g, "");
                     piece.src = img.src;
                     modeloPiece.innerHTML = modelo.innerHTML;
                 }
