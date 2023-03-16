@@ -107,7 +107,10 @@
             </div>
         </div>
         <div id="txt">
-            <span id="price_warning">Preço: <?php ?></span>
+            <span id="price_warning">Preço: <?php 
+                
+
+            ?></span>
         </div>
         <div id="buttons">
             <button id="verify">Verificar Compatibilidades</button>

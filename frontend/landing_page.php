@@ -68,24 +68,24 @@
                 </div>
                 <div class="byo_card">
                     <div class="build_img">
-                        <img src="https://static.pcdiga.com/media/catalog/product/cache/4a9972e1440204cef7cf19ceb7c4fc35/p/0/p045867_1.jpg" class="card_img" alt="">
+                        <img src="https://static.pcdiga.com/media/catalog/product/cache/4a9972e1440204cef7cf19ceb7c4fc35/p/0/p046403_3.jpg" class="card_img" alt="">
                     </div>
                     <div class="byo_cardinfo">
-                        <p class="build_name">Computador Desktop MSI MAG Codex 5 12TC-1478ES</p>
-                        <p class="build_settings">AMD Ryzen 5 5600X | Free DOS | 16GB RAM | Radeon RX 6600 XT | SSD 512GB | HDD 1TB</p><br>
-                        <span class="price">1299 €</span><br>
-                        <a href=""><button class="card_btn">Saber mais</button></a>
+                        <p class="build_name">Computador Victus by HP 15L Gaming Desktop TG02-0016np</p>
+                        <p class="build_settings">AMD Ryzen 5 5600G | Free DOS | 16GB RAM | GeForce GTX 1660 SUPER | SSD 512GB</p><br>
+                        <span class="price">649 €</span><br>
+                        <a href="https://www.pcdiga.com/computadores-e-software/computadores-desktop/computadores-gaming/computador-victus-by-hp-15l-gaming-desktop-tg02-0016np-6b450ea-ab9-196548630271"><button class="card_btn">Saber mais</button></a>
                     </div>
                 </div>
                 <div class="byo_card">
                     <div class="build_img">
-                        <img src="https://img.globaldata.pt/products/KM22-ASUS-211.jpg?auto=compress%2Cformat&fit=fill&fill-color=fff&q=70&fill=solid&w=805&h=805" class="card_img" alt="">
+                        <img src="https://static.pcdiga.com/media/catalog/product/cache/4a9972e1440204cef7cf19ceb7c4fc35/1/_/1_p051463.jpg" class="card_img" alt="">
                     </div>
                     <div class="byo_cardinfo">
-                        <p class="build_name">Computador King Mod Gamer ASUS R5</p>
-                        <p class="build_settings">AMD Ryzen 5 3600 | 16GB DDR4 | SSD 512GB | GTX 1660 Ti</p><br>
-                        <span class="price">898 €</span><br>
-                        <a href="https://www.globaldata.pt/computador-king-mod-gamer-asus-r5-16gb-512gb-gtx-1660-ti-w10-km22-asus-211"><button class="card_btn">Saber mais</button></a>
+                        <p class="build_name">Computador Desktop MSI MPG Trident A 12TC-449EU</p>
+                        <p class="build_settings">Intel Core i5-12400F | W11 Home | 16GB RAM | GeForce RTX 3060 | SSD 512GB + HDD 1TB</p><br>
+                        <span class="price">1299 €</span><br>
+                        <a href="https://www.pcdiga.com/computadores-e-software/computadores-desktop/computadores-gaming/computador-desktop-msi-mpg-trident-a-12tc-449eu-9s6-b924211-449-4711377032858"><button class="card_btn">Saber mais</button></a>
                     </div>
                 </div>
                 <div class="byo_card">

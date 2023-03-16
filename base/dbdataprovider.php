@@ -771,7 +771,7 @@ class DBDataprovider {
 
             $mail->Host = 'smtp.sapo.pt';
             $mail->Port = 587;
-            $mail->Username = 'Build Your Own';
+            $mail->Username = 'buildyourown.inc@sapo.pt';
             $mail->Password = 'Buildyourown.123';
 
             $mail->SetFrom('buildyourown.inc@sapo.pt', 'Build Your Own');
@@ -780,7 +780,7 @@ class DBDataprovider {
             $mail->Subject = 'Build Your Own - Recuperação de Password';
 
             $mail->IsHTML(true);
-            $mail->Body = "Olá,<br><br> Para recuperar a sua password, clique no link abaixo:<br><br><a href='http://localhost/PAP/resetpass_page.php?key=".$emailencripted."'>RECUPERAR PALAVRAPASS</a><br><br>Obrigado,<br><br>Build Your Own";
+            $mail->Body = "Olá,<br><br> Para recuperar a sua password, clique no link abaixo:<br><br><a href='http://localhost/PAP/frontend/resetpass_page.php?key=".$emailencripted."'>RECUPERAR PALAVRA-PASS</a><br><br>Obrigado,<br><br>Build Your Own";
 
             $mail->AddAddress($email);
 
