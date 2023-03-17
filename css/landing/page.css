@@ -15,6 +15,57 @@
     left: 10%;
 }
 
+#img{
+    position: absolute;
+    top: 28%;
+    right: 15%;
+    width: 25%;
+    height: auto;
+}
+
+.byo_swipedown{
+    position: relative;
+    top: 78vh;
+    left: 50vw;
+    width: 1.5vw;
+    height: 6vh;
+    border: 0.2vw solid white;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.byo_swipedown::after{
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    border: 0.2vw solid #EE7154;
+    height: 1vh;
+    width: 0.5vw;
+    transform: translate(-50%, -100%) rotate(45deg);
+    border-top: transparent;
+    border-left: transparent;
+    animation: byo_swipedown 1s ease-in-out infinite;
+}
+.byo_swipedown::after{
+    top: 30%;
+    animation-delay: .5s;
+}
+@keyframes byo_swipedown{
+    0%{
+        opacity: 0;
+    }
+    30%{
+        opacity: 1;
+    }
+    60%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        top: 90%;
+    }
+}
+
 .byo_body{
     position: absolute;
     width: 100vw;

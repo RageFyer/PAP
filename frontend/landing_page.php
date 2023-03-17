@@ -37,6 +37,8 @@
             o teu próprio computador ou simplesmente atualizar o teu atual, o BUILD YOUR OWN é o 
             lugar certo para ti.
         </p>
+        <img id="img" src="../img/BYO_LOGO.png">
+        <div class="byo_swipedown" onclick="window.scrollTo(0, document.body.scrollHeight)"></div>
     </div>
     <div class="byo_body">
         <h2 class="byo_category">PRÉ MONTADOS</h2>

@@ -9,6 +9,32 @@
     z-index: 1;
 }
 
+#button{
+    background-color: rgb(68, 68, 68);
+    width: 3vw;
+    height: 6vh;
+    border-radius: 200px;
+    position: absolute;
+    top: 49.5%;
+    left: 26%;
+    color: white;
+    z-index: 1;
+    border: #282828;
+}
+
+.fa-pen-to-square{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5vw;
+}
+
+#button:hover{
+    background-color: #EE7154;
+    cursor: pointer;
+}
+
 .background{
     background-color: white;
     width: 70vw;

@@ -27,7 +27,8 @@
     <table>
         <thead>
             <tr>
-                <th id="left">PROCESSADOR</th>
+                <th id="left">NR</th>
+                <th>PROCESSADOR</th>
                 <th>COOLER</th>
                 <th>MOTHERBOARD</th>
                 <th>ARMAZENAMENTO</th>

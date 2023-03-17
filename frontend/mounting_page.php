@@ -3,6 +3,7 @@
     include("../base/dbdataprovider.php");
 
     $dataprovider = new DBDataprovider();
+
 ?>
 
 <!DOCTYPE html>
@@ -63,6 +64,7 @@
             <input type="hidden" name="storage" id="storage">
             <input type="hidden" name="powersupply" id="powersupply">
             <input type="hidden" name="case" id="case">
+            <input type="hidden" name="check" id="ve">
             <button type="submit" id="btn"></button>
         </form>
 
@@ -296,6 +298,8 @@
                 document.getElementById('storage').value = storage;
                 document.getElementById('powersupply').value = powersupply;
                 document.getElementById('case').value = casee;
+                document.getElementById('ve').value = 0;
+
 
                 document.getElementById('btn').click(); 
             }
@@ -322,10 +326,7 @@
                 document.getElementById('storage').value = storage;
                 document.getElementById('powersupply').value = powersupply;
                 document.getElementById('case').value = casee;
-                
-                <?php
-                    $_SESSION['verify'] = true;
-                ?>
+                document.getElementById('ve').value = 1;
 
                 document.getElementById('btn').click(); 
             }
@@ -358,10 +359,11 @@
                 $storage = $_POST['storage'];
                 $powersupply = $_POST['powersupply'];
                 $case = $_POST['case'];
-                if(isset($_SESSION['verify'])){
-                    $_SESSION['verify'] = false;
+                $check = $_POST['ve'];
+
+                if($check == 1){
                     $dataprovider->verifyPc($cpu, $cooler, $motherboard, $ram, $graphics, $storage, $powersupply, $case);
-                }else{
+                }else if($check == 0){
                     $dataprovider->sendPc($cpu, $cooler, $motherboard, $ram, $graphics, $storage, $powersupply, $case);
                 }
             }else{

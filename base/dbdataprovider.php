@@ -141,6 +141,22 @@ class DBDataprovider {
         }
     }
 
+    function getImage(){
+        $this->connect();
+        $username = $_SESSION['username'];
+        $sql = "SELECT photo FROM users WHERE username = '$username'";
+        $resultset = mysqli_query($this->conn, $sql);
+        if ($resultset->num_rows > 0) {
+            $row = $resultset->fetch_assoc();
+            $photo = $row['photo'];
+            echo '<script> console.log("'. $photo .'")</script>';
+            echo '<img src="../img/userspic,'. basename($photo) .'"/>';
+        } else {
+            echo '<script> console.log("no photo")</script>';
+            echo '<img src="../img/user.png"/>';
+        }
+    }
+
     function nameExists($username){
         $this->connect();
         $sql = "SELECT * FROM users WHERE username = '$username'";
@@ -154,6 +170,7 @@ class DBDataprovider {
 
     function getComputers() {
         $this->connect();
+        $nr = 1;
         $username = $_SESSION['username'];
         $sql = "SELECT id FROM users WHERE username = '$username'";
         $resultset = mysqli_query($this->conn, $sql);
@@ -165,6 +182,7 @@ class DBDataprovider {
             if (mysqli_num_rows($resultset) > 0) {
                 while($row = $resultset->fetch_assoc()) {
                     echo "<tr>
+                    <td>" . $nr++ . "</td>
                     <td>" . $this->getCpu($row["cpus_id"]) . "</td>
                     <td>" . $this->getCooler($row["coolers_id"]) . "</td>
                     <td>" . $this->getMotherboard($row["motherboards1_id"]) . "</td>
@@ -287,9 +305,10 @@ class DBDataprovider {
         }
     }
 
-    function changeUser($username, $old_email, $new_email){
+    function changeUser($username, $old_email, $new_email, $profile_pic){
         $this->connect();
 
+        $profile_pic = pathinfo($profile_pic['name'], PATHINFO_EXTENSION);
         if($username != $_SESSION['username'] && $new_email != ""){
             if ($this->nameExists($username) && $this->emailExists($new_email)) {
                 echo "<script>
@@ -307,10 +326,8 @@ class DBDataprovider {
                 $sql = "UPDATE users SET username = '$username', email = '$new_email' WHERE email = '$old_email'";
                 $resultset = mysqli_query($this->conn, $sql);
                 if ($resultset) {
-                    echo "<script>
-                    document.getElementById('msg').innerHTML = 'Username e email alterados com sucesso!';
-                    </script>";
                     $_SESSION['username'] = $username;
+                    header("Refresh:0");
                 } else {
                     echo "<script>
                     document.getElementById('error_msg').innerHTML = 'Erro ao alterar o username e email!';
@@ -326,9 +343,7 @@ class DBDataprovider {
                 $sql = "UPDATE users SET email = '$new_email' WHERE username = '$username'";
                 $resultset = mysqli_query($this->conn, $sql);
                 if ($resultset) {
-                    echo "<script>
-                    document.getElementById('msg').innerHTML = 'Email alterado com sucesso!';
-                    </script>";
+                    header("Refresh:0");
                 } else {
                     echo "<script>
                     document.getElementById('error_msg').innerHTML = 'Erro ao alterar o email!';
@@ -344,13 +359,36 @@ class DBDataprovider {
                 $sql = "UPDATE users SET username = '$username' WHERE email = '$old_email'";
                 $resultset = mysqli_query($this->conn, $sql);
                 if ($resultset) {
-                    echo "<script>
-                    document.getElementById('msg').innerHTML = 'Username alterado com sucesso!';
-                    </script>";
                     $_SESSION['username'] = $username;
+                    header("Refresh:0");
                 } else {
                     echo "<script>
                     document.getElementById('error_msg').innerHTML = 'Erro ao alterar o username!';
+                    </script>";
+                }
+            }
+        } else if ($username != $_SESSION['username'] && $new_email != "" && !$profile_pic["error"] == 4) {
+            if ($this->nameExists($username) && $this->emailExists($new_email)) {
+                echo "<script>
+                document.getElementById('error_msg').innerHTML = 'Username e Email já existe!';
+                </scrip>";
+            } else if ($this->nameExists($username)) {
+                echo "<script>
+                document.getElementById('error_msg').innerHTML = 'Username já existe!';
+                </script>";
+            }else if ($this->emailExists($new_email)) {
+                echo "<script>
+                document.getElementById('error_msg').innerHTML = 'Email já existe!';
+                </script>";
+            }  else {
+                $sql = "UPDATE users SET username = '$username', email = '$new_email', photo = '$profile_pic' WHERE email = '$old_email'";
+                $resultset = mysqli_query($this->conn, $sql);
+                if ($resultset) {
+                    $_SESSION['username'] = $username;
+                    header("Refresh:0");
+                } else {
+                    echo "<script>
+                    document.getElementById('error_msg').innerHTML = 'Erro ao alterar o username e email!';
                     </script>";
                 }
             }
@@ -619,16 +657,8 @@ class DBDataprovider {
 
         if ($resultset) {
             echo "<script>document.getElementById('byo_category4').innerHTML='Computador Guardado';";
-
-            echo "<script>document.getElementById('save').innerHTML='<i class=\"fa-solid fa-check\"></i>';
-                document.getElementById('save').style.backgroundColor='green';
-                document.getElementById('save').style.border='none';</script>";
         } else {
             echo "<script>document.getElementById('byo_category4').innerHTML='Não foi possivel guardar o seu computador';";
-            
-            echo "<script>document.getElementById('save').innerHTML='<i class=\"fa-solid fa-xmark\"></i>';
-                document.getElementById('save').style.backgroundColor='red';
-                document.getElementById('save').style.border='none';</script>";
         }
     }
 
