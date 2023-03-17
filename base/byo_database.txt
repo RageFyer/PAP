@@ -27,13 +27,17 @@ CREATE TABLE IF NOT EXISTS `cases` (
   `price` int(11) NOT NULL DEFAULT 0,
   `stock` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- A despejar dados para tabela byo_database.cases: ~1 rows (aproximadamente)
+-- A despejar dados para tabela byo_database.cases: ~5 rows (aproximadamente)
 DELETE FROM `cases`;
 /*!40000 ALTER TABLE `cases` DISABLE KEYS */;
 INSERT INTO `cases` (`id`, `name`, `img`, `form`, `graphicsdime`, `price`, `stock`) VALUES
-	(1, 'Corsair 4000D', 'https://cdna.pcpartpicker.com/static/forever/images/product/bc6e987da3fe22c616898d1d7fa3d227.1600.jpg', 'ATX', 360, 109, 0);
+	(1, 'Corsair 4000D', 'https://cdna.pcpartpicker.com/static/forever/images/product/bc6e987da3fe22c616898d1d7fa3d227.1600.jpg', 'ATX', 360, 109, 0),
+	(2, 'Lian Li O11 Dynamic EVO', 'https://cdna.pcpartpicker.com/static/forever/images/product/ea0dee3c3376cc6326ca2f4a73a054ac.1600.jpg', 'ATX', 422, 160, 1),
+	(3, 'NZXT H510', 'https://cdna.pcpartpicker.com/static/forever/images/product/cddea328a7447afc83e6b561f9448abb.1600.jpg', 'ATX', 381, 159, 0),
+	(4, 'Fractal Design North', 'https://cdna.pcpartpicker.com/static/forever/images/product/1977a3a3f6f1238d12ea2a555be4d7ce.1600.jpg', 'ATX', 300, 149, 1),
+	(5, 'Lian Li LANCOOL 216', 'https://cdna.pcpartpicker.com/static/forever/images/product/f4d776081b676d3dbf78ac6db48be9d6.1600.jpg', 'ATX', 392, 104, 1);
 /*!40000 ALTER TABLE `cases` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela byo_database.coolers
@@ -69,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `coolers_sockets` (
   CONSTRAINT `coolers_sockets_ibfk_2` FOREIGN KEY (`socket_id`) REFERENCES `sockets` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- A despejar dados para tabela byo_database.coolers_sockets: ~20 rows (aproximadamente)
+-- A despejar dados para tabela byo_database.coolers_sockets: ~19 rows (aproximadamente)
 DELETE FROM `coolers_sockets`;
 /*!40000 ALTER TABLE `coolers_sockets` DISABLE KEYS */;
 INSERT INTO `coolers_sockets` (`cooler_id`, `socket_id`) VALUES
@@ -155,15 +159,13 @@ CREATE TABLE IF NOT EXISTS `donepcs` (
   CONSTRAINT `fk_donepcs_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- A despejar dados para tabela byo_database.donepcs: ~5 rows (aproximadamente)
+-- A despejar dados para tabela byo_database.donepcs: ~3 rows (aproximadamente)
 DELETE FROM `donepcs`;
 /*!40000 ALTER TABLE `donepcs` DISABLE KEYS */;
 INSERT INTO `donepcs` (`users_id`, `cpus_id`, `coolers_id`, `motherboards1_id`, `rams1_id`, `graphicscards1_id`, `storages1_id`, `powersupplys1_id`, `cases1_id`) VALUES
 	(1, 1, 1, 1, 1, 1, 1, 1, 1),
-	(1, 1, 1, 1, 1, 2, 1, 1, 1),
-	(3, 4, 3, 1, 2, 4, 3, 1, 1),
-	(2, 1, 3, 2, 4, 2, 1, 2, 1),
-	(2, 2, 3, 1, 2, 1, 3, 1, 1);
+	(1, 1, 1, 3, 1, 1, 1, 1, 1),
+	(1, 1, 1, 3, 1, 1, 1, 1, 1);
 /*!40000 ALTER TABLE `donepcs` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela byo_database.graphicscards
@@ -339,14 +341,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   CONSTRAINT `fk_user_role` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- A despejar dados para tabela byo_database.users: ~4 rows (aproximadamente)
+-- A despejar dados para tabela byo_database.users: ~2 rows (aproximadamente)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `email`, `username`, `password`, `photo`, `role_id`) VALUES
-	(1, 'joao@gmail.com', 'Joao', '123', NULL, 2),
-	(2, 'andre@gmail.com', 'ZEZE', '123', NULL, 2),
-	(3, 'joaozinhogameplay@yahoo.br', 'Rei', 'bernardu', NULL, 2),
-	(4, 'androxlast@gmail.com', 'Andrezao', 'sandre2005.', NULL, 2);
+	(1, 'joao@gmail.com', 'Joao', '123', NULL, 2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

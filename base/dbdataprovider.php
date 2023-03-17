@@ -141,22 +141,6 @@ class DBDataprovider {
         }
     }
 
-    function getImage(){
-        $this->connect();
-        $username = $_SESSION['username'];
-        $sql = "SELECT photo FROM users WHERE username = '$username'";
-        $resultset = mysqli_query($this->conn, $sql);
-        if ($resultset->num_rows > 0) {
-            $row = $resultset->fetch_assoc();
-            $photo = $row['photo'];
-            echo '<script> console.log("'. $photo .'")</script>';
-            echo '<img src="../img/userspic,'. basename($photo) .'"/>';
-        } else {
-            echo '<script> console.log("no photo")</script>';
-            echo '<img src="../img/user.png"/>';
-        }
-    }
-
     function nameExists($username){
         $this->connect();
         $sql = "SELECT * FROM users WHERE username = '$username'";
