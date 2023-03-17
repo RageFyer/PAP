@@ -359,7 +359,7 @@
                 $storage = $_POST['storage'];
                 $powersupply = $_POST['powersupply'];
                 $case = $_POST['case'];
-                $check = $_POST['ve'];
+                $check = $_POST['check'];
 
                 if($check == 1){
                     $dataprovider->verifyPc($cpu, $cooler, $motherboard, $ram, $graphics, $storage, $powersupply, $case);

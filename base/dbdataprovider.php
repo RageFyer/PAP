@@ -305,15 +305,14 @@ class DBDataprovider {
         }
     }
 
-    function changeUser($username, $old_email, $new_email, $profile_pic){
+    function changeUser($username, $old_email, $new_email){
         $this->connect();
-
-        $profile_pic = pathinfo($profile_pic['name'], PATHINFO_EXTENSION);
+        
         if($username != $_SESSION['username'] && $new_email != ""){
             if ($this->nameExists($username) && $this->emailExists($new_email)) {
                 echo "<script>
                 document.getElementById('error_msg').innerHTML = 'Username e Email já existe!';
-                </scrip>";
+                </script>";
             } else if ($this->nameExists($username)) {
                 echo "<script>
                 document.getElementById('error_msg').innerHTML = 'Username já existe!';
@@ -364,31 +363,6 @@ class DBDataprovider {
                 } else {
                     echo "<script>
                     document.getElementById('error_msg').innerHTML = 'Erro ao alterar o username!';
-                    </script>";
-                }
-            }
-        } else if ($username != $_SESSION['username'] && $new_email != "" && !$profile_pic["error"] == 4) {
-            if ($this->nameExists($username) && $this->emailExists($new_email)) {
-                echo "<script>
-                document.getElementById('error_msg').innerHTML = 'Username e Email já existe!';
-                </scrip>";
-            } else if ($this->nameExists($username)) {
-                echo "<script>
-                document.getElementById('error_msg').innerHTML = 'Username já existe!';
-                </script>";
-            }else if ($this->emailExists($new_email)) {
-                echo "<script>
-                document.getElementById('error_msg').innerHTML = 'Email já existe!';
-                </script>";
-            }  else {
-                $sql = "UPDATE users SET username = '$username', email = '$new_email', photo = '$profile_pic' WHERE email = '$old_email'";
-                $resultset = mysqli_query($this->conn, $sql);
-                if ($resultset) {
-                    $_SESSION['username'] = $username;
-                    header("Refresh:0");
-                } else {
-                    echo "<script>
-                    document.getElementById('error_msg').innerHTML = 'Erro ao alterar o username e email!';
                     </script>";
                 }
             }
@@ -656,15 +630,15 @@ class DBDataprovider {
 
 
         if ($resultset) {
-            echo "<script>document.getElementById('byo_category4').innerHTML='Computador Guardado';";
+            echo "<script>document.getElementById('byo_category4').textContent +='Computador Guardado';";
         } else {
-            echo "<script>document.getElementById('byo_category4').innerHTML='Não foi possivel guardar o seu computador';";
+            echo "<script>document.getElementById('byo_category3').textContent +='Não foi possivel guardar o seu computador';";
         }
     }
 
     function verifyPc($cpu, $cooler, $motherboard, $ram, $graphics, $storage, $powersupply, $case){
-        $verification = 0;
         $this->connect();
+        $verification = 0;
         
         $sql = "SELECT socket FROM cpus" . " WHERE name = '" . $cpu . "'";
         $resultset = mysqli_query($this->conn, $sql);
@@ -689,7 +663,7 @@ class DBDataprovider {
         }
 
         if ($verification == 0) {
-            echo "<script>document.getElementById('byo_category3').textContent +='O cooler não é compatível com o processador selecionado ';</script>";
+            echo "<script>document.getElementById('byo_category3').textContent +='O cooler não é compatível com o processador selecionado. ';</script>";
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -699,7 +673,7 @@ class DBDataprovider {
         $motherboard_socket = $row['socket'];
 
         if($cpu_socket != $motherboard_socket){
-            echo "<script>document.getElementById('byo_category3').textContent += 'A placa mãe não é compatível com o processador selecionado ';</script>";
+            echo "<script>document.getElementById('byo_category3').textContent += 'A placa mãe não é compatível com o processador selecionado. ';</script>";
         }else{
             $verification++;
         }
@@ -716,7 +690,7 @@ class DBDataprovider {
         $ram_ram = $row['typeRam'];
 
         if($motherboard_ram != $ram_ram){
-            echo "<script>document.getElementById('byo_category3').textContent += 'A memória não é compatível com a placa mãe selecionada ';</script>";
+            echo "<script>document.getElementById('byo_category3').textContent += 'A memória não é compatível com a placa mãe selecionada. ';</script>";
         }else{
             $verification++;
         }
@@ -732,13 +706,13 @@ class DBDataprovider {
         $case_graphicsdime = $row['graphicsdime'];
 
         if($graphics_dimensions > $case_graphicsdime){
-            echo "<script>document.getElementById('byo_category3').textContent += 'A placa gráfica não é compatível com a caixa selecionada ';</script>";
+            echo "<script>document.getElementById('byo_category3').textContent += 'A placa gráfica não é compatível com a caixa selecionada. ';</script>";
         }else{
             $verification++;
         }
 
         if ($verification == 4) {
-            echo "<script>document.getElementById('byo_category4').textContent += 'Tudo é compativel';</script>";
+            echo "<script>document.getElementById('byo_category4').textContent += 'Tudo é compativel.';</script>";
         }
     }
 

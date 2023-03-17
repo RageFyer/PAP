@@ -28,10 +28,6 @@
     </div>
     
     <form method="POST">
-        <?php
-            $dataprovider = new DBDataprovider();
-            $dataprovider->getImage();
-        ?>
         <img class="img" src="../img/user.png">
         <input type="file" id="inputfile" name="profile_pic" style="display: none;" >
         <div id="button" onclick="document.getElementById('inputfile').click();">
@@ -55,10 +51,9 @@
             $name = $_POST['name'];
             $old_email = $_POST['old_email'];
             $new_email = $_POST['new_email'];
-            $_FILES['profile_pic'] = $_POST['profile_pic'];
 
             $dataprovider = new DBDataprovider();
-            $dataprovider->changeUser($name, $old_email, $new_email, $_FILES['profile_pic']);
+            $dataprovider->changeUser($name, $old_email, $new_email);
         }
     ?>
 </body>
