@@ -159,13 +159,9 @@ CREATE TABLE IF NOT EXISTS `donepcs` (
   CONSTRAINT `fk_donepcs_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- A despejar dados para tabela byo_database.donepcs: ~3 rows (aproximadamente)
+-- A despejar dados para tabela byo_database.donepcs: ~6 rows (aproximadamente)
 DELETE FROM `donepcs`;
 /*!40000 ALTER TABLE `donepcs` DISABLE KEYS */;
-INSERT INTO `donepcs` (`users_id`, `cpus_id`, `coolers_id`, `motherboards1_id`, `rams1_id`, `graphicscards1_id`, `storages1_id`, `powersupplys1_id`, `cases1_id`) VALUES
-	(1, 1, 1, 1, 1, 1, 1, 1, 1),
-	(1, 1, 1, 3, 1, 1, 1, 1, 1),
-	(1, 1, 1, 3, 1, 1, 1, 1, 1);
 /*!40000 ALTER TABLE `donepcs` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela byo_database.graphicscards
@@ -341,11 +337,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   CONSTRAINT `fk_user_role` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- A despejar dados para tabela byo_database.users: ~2 rows (aproximadamente)
+-- A despejar dados para tabela byo_database.users: ~1 rows (aproximadamente)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `email`, `username`, `password`, `photo`, `role_id`) VALUES
-	(1, 'joao@gmail.com', 'Joao', '123', NULL, 2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

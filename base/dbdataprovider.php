@@ -614,9 +614,9 @@ class DBDataprovider {
 
 
         if ($resultset) {
-            echo "<script>document.getElementById('byo_category4').textContent +='Computador Guardado';";
+            echo "<script>document.getElementById('byo_category4').textContent +='Computador Guardado';</script>";
         } else {
-            echo "<script>document.getElementById('byo_category3').textContent +='Não foi possivel guardar o seu computador';";
+            echo "<script>document.getElementById('byo_category3').textContent +='Não foi possivel guardar o seu computador';</script>";
         }
     }
 
