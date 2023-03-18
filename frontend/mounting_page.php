@@ -368,9 +368,7 @@
                 }
             }else{
                 echo "<script>
-                document.getElementById('save').onclick = function() {
-                    document.getElementById('byo_category3').innerHTML = 'Faça login para guardar o seu pc!';
-                }
+                    document.getElementById('byo_category3').innerHTML = 'Faça login para guardar ou verificar o seu pc!';
                 </script>";
             }
         }
